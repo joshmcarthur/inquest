@@ -1,0 +1,40 @@
+#sidebar {
+	background-color: #34495E;
+	color: white;
+	margin-bottom: -5000px;
+	padding-bottom: 5000px;
+
+	#application-title {
+		color: white;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: 300;
+		font-size: 48px;
+		font-family: serif;
+		margin-top: 10%;
+		margin-bottom: 20%;
+	}
+
+	p {
+		font-size: 125%;
+		line-height: 1.25;
+		font-weight: 200;
+		margin: 20% 10%;
+	}
+
+	#current-user {
+		.user-badge {
+			margin: auto;
+			width: 100%;
+		}
+		.user-badge i, .user-badge img {
+			color: white;
+			font-size: 200px;
+		}
+
+		.user-title {
+			font-style: italic;
+			font-weight: 200;
+		}
+	}
+}
