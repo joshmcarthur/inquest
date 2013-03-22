@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: inquest_dev
+
+test:
+  adapter: postgresql
+  database: inquest_test
