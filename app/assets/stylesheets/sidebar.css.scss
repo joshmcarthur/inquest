@@ -15,13 +15,11 @@
 		margin-bottom: 20%;
 	}
 
-	p {
-		font-size: 125%;
-		line-height: 1.25;
-		font-weight: 200;
-		margin: 20% 10%;
+	#login_form {
+		input[type=email], input[type=password] {
+			width: 95%;
+		}
 	}
-
 	#current-user {
 		.user-badge {
 			margin: auto;
