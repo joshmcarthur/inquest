@@ -10,4 +10,23 @@ describe QuestionsController do
     end
   end
 
+  context "when I am logged in" do
+    before do
+      sign_in User.create(:email => 'test@example.com', :password => 'password', :password_confirmation => 'password')
+    end
+
+    describe "GET index" do
+      before do
+        get :index
+      end
+
+      it "should render the index template" do
+        response.should render_template :index
+      end
+
+      it "should instantiate a collection of questions" do
+        assigns(:questions).should eq Question.all
+      end
+    end
+  end
 end
