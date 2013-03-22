@@ -51,6 +51,9 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     flat-ui-rails (0.0.2)
+    font-awesome-sass-rails (3.0.2.2)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     guard (1.6.2)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
@@ -60,9 +63,6 @@ GEM
     guard-rspec (2.5.1)
       guard (>= 1.1)
       rspec (~> 2.11)
-    font-awesome-sass-rails (3.0.2.2)
-      railties (>= 3.1.1)
-      sass-rails (>= 3.1.1)
     hike (1.2.1)
     i18n (0.6.4)
     journey (1.0.4)
@@ -162,8 +162,8 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   flat-ui-rails
-  guard-rspec
   font-awesome-sass-rails
+  guard-rspec
   jquery-rails
   pg
   rails (= 3.2.12)
