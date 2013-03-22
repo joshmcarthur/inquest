@@ -10,6 +10,7 @@ gem 'devise'
 gem 'strong_parameters'
 gem 'bootstrap-sass'
 gem 'flat-ui-rails'
+gem 'font-awesome-sass-rails'
 
 
 # Gems used only for assets and not required
