@@ -11,3 +11,29 @@ body {
 	padding-left: 0px;
 	padding-right: 0px;
 }
+
+.navbar-fixed-top > .navbar-inner {
+	background-color: #34495E;
+	background-image: none;
+	padding: 0 20%;
+}
+.navbar {
+	.brand, .brand:active, .brand:visited {
+		text-shadow: none;
+	}
+}
+
+.brand, .brand:active, .brand:visited {
+	color: white;
+	text-decoration: none;
+	text-shadow: none;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 300;
+	font-family: serif;
+}
+
+.brand.large {
+	font-size: 400%;
+	margin: 10% auto;
+}
