@@ -7,15 +7,18 @@
 </head>
 <body>
 
-<div class="container-fluid">
-	<div class="row-fluid">
-	<div class="span9">
-		<%= yield %>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<%= link_to 'InQuest', root_path, :class => 'brand' %>
+		<div class="pull-right">
+			<%= link_to t('devise.sessions.sign_in'), new_user_session_path, :class => 'btn btn-primary' %>
+		</div>
 	</div>
-	<%= render "shared/sidebar" %>
-</div>
 </div>
 
+<div class="container-fluid">
+	<%= yield %>
+</div>
 
 <%= javascript_include_tag "application" %>
 </body>

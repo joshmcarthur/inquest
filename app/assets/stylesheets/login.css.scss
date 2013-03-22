@@ -1,0 +1,9 @@
+body.login {
+	background-color: #34495E;
+}
+
+form#new_user {
+	input[type=email], input[type=password] {
+		width: 95%;
+	}
+}
