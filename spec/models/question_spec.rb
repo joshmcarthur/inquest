@@ -45,9 +45,3 @@ describe Question do
   end
 
 end
-  # it { should validate_numericality_of(:points) }
-  # it { should_not allow_value(nil).for(:points) }
-  # it { should allow_value(DateTime.now - 1.day).for(:completed_at) }
-  # it { should_not allow_value(DateTime.now + 1.day).for(:completed_at) }
-  # it { should belong_to :pharmacist }
-  # it { should_not allow_value(nil).for(:pharmacist) }
