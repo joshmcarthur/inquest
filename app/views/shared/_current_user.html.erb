@@ -1,7 +1,15 @@
-<div id="current-user" class="wide-but-centered">
-	<p>
-		Inquest is a platform for generating quality knowledge, based on a proven community
-		reputation system.
-	</p>
-	<a class="btn btn-primary btn-large btn-block">Log In</a>
+<div id="current_user" class="pull-right">
+	<ul class="nav">
+		<li>
+			<div class="navbar-text user-label">
+				<div class="avatar">
+					<%= image_tag user.gravatar_url %>
+				</div>
+				<%= user.email %>
+			</div>
+		</li>
+		<li>
+			<%= button_to t('devise.sessions.sign_out'), destroy_user_session_path, :method => :delete, :class => 'btn btn-danger' %>
+		</li>
+	</ul>
 </div>

@@ -54,6 +54,7 @@ GEM
     font-awesome-sass-rails (3.0.2.2)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
+    gravtastic (3.2.6)
     guard (1.6.2)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
@@ -163,6 +164,7 @@ DEPENDENCIES
   devise
   flat-ui-rails
   font-awesome-sass-rails
+  gravtastic
   guard-rspec
   jquery-rails
   pg
