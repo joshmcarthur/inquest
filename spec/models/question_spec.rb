@@ -25,6 +25,25 @@ describe Question do
     end
   end
 
+  context "with an answer" do
+
+    before(:each) do
+      @answer = Answer.new
+      @answer.content = "Content for answer"
+      @question.answers << @answer
+    end
+
+    it "should have an answer" do
+      @question.answers.should_not be_empty
+    end
+  end
+
+  context "without an answer" do
+    it "should not have an answer" do
+      @question.answers.should be_empty
+    end
+  end
+
 end
   # it { should validate_numericality_of(:points) }
   # it { should_not allow_value(nil).for(:points) }
