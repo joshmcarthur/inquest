@@ -19,7 +19,8 @@ class Question < ActiveRecord::Base
   #
   # Returns the generated HTML for the question content
   def content_html
-    Markdown
+    Inquest::Application.config.markdown_renderer.render(self.content)
+  end
 
   # Public: Determine whether this question is owned by the given user.
   #
