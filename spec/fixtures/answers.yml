@@ -2,3 +2,8 @@ test:
   user: answerer
   question: test
   content: 'You just do!'
+
+another_test:
+  user: tester
+  question: test
+  content: 'Another'
