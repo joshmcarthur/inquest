@@ -3,39 +3,51 @@ require 'spec_helper'
 describe "User answers question" do
   fixtures :users, :questions
   let(:user) { users(:tester) }
+  let(:question) { questions(:test) }
 
   describe "answering question" do
 
     before(:each) do
-      current_user = users(:tester)
+      sign_in_as user
+      visit question_path(question)
     end
-
-    it "should display the answer text_area"
 
     context "valid inputs" do
       before do
-        within 'form#answer' do
-          fill_in 'content', :with => 'Test answer'
-          click 'Save'
+        within 'form#new_answer' do
+          fill_in 'answer[content]', :with => 'Test answer'
+          click_button 'Submit Answer'
         end
       end
 
-      it "should show the new answer on the page" do
-        page.should have_content 'Test answer'
+      it "should be on the question page" do
+        current_path.should eq question_path(question)
       end
 
-      it "should return a success" do
-        page.should have_content 'Saved your answer'
+      it "should show the new answer on the page" do
+        within "#answers" do
+          page.should have_content 'Test answer'
+        end
       end
     end
 
     context "invalid inputs" do
-      it "should return an error" do
-        within 'form#answer' do
-          click 'Save'
+      before do
+        within "form#new_answer" do
+          click_button "Submit Answer"
         end
+      end
 
-        page.should have_content 'Errored out n00b'
+      it "should highlight incorrect fields" do
+        within "form#new_answer" do
+          page.should have_selector '.control-group.error'
+        end
+      end
+
+      it "should show an error message" do
+        within "form#new_answer" do
+          page.should have_content "can't be blank"
+        end
       end
     end
   end
