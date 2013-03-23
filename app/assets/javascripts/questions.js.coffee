@@ -5,14 +5,16 @@
 #= require epiceditor
 
 Inquest.Questions ||= {}
+Inquest.editors ||= []
 
 Inquest.Questions.init = ->
-	new EpicEditor(
+	Inquest.editors.push new EpicEditor(
 		container: $('div.epiceditor')[0], 
 		textarea: $($('div.epiceditor').attr('data-sync-with'))[0],
 		basePath: '/assets/editor',
 		clientSideStorage: false
 	).load()
+
 
 $ ->
 	Inquest.Questions.init()
