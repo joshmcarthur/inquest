@@ -30,6 +30,7 @@ end
 gem 'jquery-rails'
 
 group :development, :test do
+  gem 'debugger'
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'guard-bundler'
