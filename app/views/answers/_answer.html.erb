@@ -1,0 +1,18 @@
+<div class="answer">
+	<div class="row">
+		<div class="content span12">
+			<%= answer.content.html_safe %>
+		</div>
+
+		<div class="author span12">
+			<div class="row">
+				<div class="span9">
+					Submitted by <%= link_to answer.user.username, 'question.user' %>.
+				</div>
+				<div class="span3">
+					Submitted at <%= answer.created_at.to_s(:short) %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

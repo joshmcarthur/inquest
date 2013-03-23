@@ -1,0 +1,10 @@
+<%= form_for [@question, @answer] do |f| %>
+	<fieldset>
+		<legend>Can you answer this question?</legend>
+
+		<div class="epiceditor" data-sync-with="#answer_content"></div>
+		<%= f.text_area :content, :class => 'hide' %>
+
+		<%= f.submit 'Submit Answer', :class => 'pull-right submit-without-container btn btn-primary' %>
+	</fieldset>
+<% end %>

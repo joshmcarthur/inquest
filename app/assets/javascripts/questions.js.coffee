@@ -9,7 +9,7 @@ Inquest.Questions ||= {}
 Inquest.Questions.init = ->
 	new EpicEditor(
 		container: $('div.epiceditor')[0], 
-		textarea: 'question_content',
+		textarea: $($('div.epiceditor').attr('data-sync-with'))[0],
 		basePath: '/assets/editor',
 		clientSideStorage: false
 	).load()
