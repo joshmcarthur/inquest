@@ -20,4 +20,12 @@ describe Answer do
 
     it { should_not be_valid }
   end
+
+  describe "#accept!" do
+    it "should update the accepted at attribute" do
+      expect {
+        subject.accept!
+      }.to change(subject, :accepted_at)
+    end
+  end
 end
