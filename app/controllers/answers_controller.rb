@@ -1,8 +1,7 @@
 class AnswersController < ApplicationController
   before_filter :authenticate_user!
-  respond_to :html, :js, :json
-
   before_filter :find_question
+
 
   def new
     @answer = current_user.answers.build 
@@ -14,7 +13,7 @@ class AnswersController < ApplicationController
     if @answer.save
       redirect_to @question
     else
-      render :new
+      render 'questions/show'
     end
   end
 
