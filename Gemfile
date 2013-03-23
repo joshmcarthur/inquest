@@ -5,9 +5,14 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+# Backend
 gem 'pg'
 gem 'devise'
 gem 'strong_parameters'
+gem 'redcarpet'
+
+# Frontend
+gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'flat-ui-rails'
 gem 'font-awesome-sass-rails'
@@ -27,7 +32,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+
 
 group :development, :test do
   gem 'debugger'
