@@ -1,26 +1,23 @@
 require 'spec_helper'
 
 describe Answer do
+  fixtures :answers
+  fixtures :users
+  fixtures :questions
 
-  before(:each) do
-    @answer = Answer.new
-    @answer.content = "Help for you"
+  subject do
+    answers(:test)
   end
 
-  context "with valid attributes" do
-    it "should be save-able" do
-      @answer.should be_valid
-    end
-  end
+  it { should be_valid }
+  it { subject.user.should be_a User }
+  it { subject.question.should be_a Question }
 
   context "with invalid attributes" do
-
-    before(:each) do
-      @answer.content = ''
+    before do
+      subject.content = ""
     end
 
-    it "should not be save-able" do
-      @answer.should_not be_valid
-    end
+    it { should_not be_valid }
   end
 end

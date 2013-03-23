@@ -1,67 +1,34 @@
 require 'spec_helper'
 
 describe User do
-  let(:user) { User.new(
-                :email => 'tester@example.com', 
-                :password => 'password1', 
-                :password_confirmation => 'password1'
-              )
-  }
+  fixtures :users
+
+  subject do
+    users(:tester)
+  end
+
   context "with valid attributes" do
-    it "should be valid" do
-      user.should be_valid
-    end
+    it { should be_valid }
   end
 
   context "with missing attributes" do
     before do
-      user.password = ""
+      subject.password = ""
     end
     
-    it "should not be valid" do
-      user.should_not be_valid
-    end
+    it { should_not be_valid }
   end
 
-  context "with questions and answers" do
-
-    before(:all) do
-      question = Question.new
-      question.title = "A title"
-      question.content = "A questions content"
-      user.questions << question
-
-      answer = Answer.new
-      answer.content = "An answer"
-      user.answers << answer
-    end
-
-    it "should have questions" do
-      user.questions.should_not be_empty
-    end
-
-    it "should have answers" do
-      user.answers.should_not be_empty
-    end
-
-    it "should be save-able" do
-      user.should be_valid
-    end
+  it "should have questions" do
+    expect {
+      subject.questions << Question.new
+    }.to change(subject.questions, :size).by(1)
   end
 
-  context "without questions and answers" do
-
-    it "should not have questions" do
-      user.questions.should be_empty
-    end
-
-    it "should not have answers" do
-      user.answers.should be_empty
-    end
-
-    it "should be save-able" do
-      user.should be_valid
-    end
+ 
+  it "should have answers" do
+    subject.answers << Answer.new
+    subject.answers.size.should eq 1
   end
 
 end
