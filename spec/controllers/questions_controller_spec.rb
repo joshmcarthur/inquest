@@ -30,5 +30,43 @@ describe QuestionsController do
         assigns(:questions).should have(2).instances_of(Question)
       end
     end
+
+    describe "POST create" do
+      context "correct attributes are provided" do
+        before do
+          post :create, :question => {:title => 'New Question', :content => 'New Content'}
+        end
+
+        it "should redirect to the question page" do
+          response.should redirect_to assigns(:question)
+        end
+
+        it "should save the question" do
+          assigns(:question).should be_persisted
+        end
+
+        it "should assign the created question" do
+          assigns(:question).should be_a(Question)
+        end
+      end
+
+      context "incorrect attributes are provied" do
+        before do
+          post :create, :question => {:title => ''}
+        end
+
+        it "should assign the question" do
+          assigns(:question).should be_a(Question)
+        end
+
+        it "should not save the question" do
+          assigns(:question).should_not be_persisted
+        end
+
+        it "should render the new template" do
+          response.should render_template :new
+        end
+      end
+    end
   end
 end

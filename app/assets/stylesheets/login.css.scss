@@ -3,7 +3,7 @@ body.login {
 }
 
 form#new_user {
-	input[type=email], input[type=password] {
+	input[type=text], input[type=password] {
 		width: 95%;
 	}
 }

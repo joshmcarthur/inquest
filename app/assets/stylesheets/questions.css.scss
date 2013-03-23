@@ -6,3 +6,17 @@ a#new_question, a#new_question:visited, a#new_question:active {
 	padding: 2% 5%;
 	width: 100%;
 }
+
+input.input-block-level {
+	padding: 20px;
+}
+
+.submit-without-container {
+	margin-top: 20px;
+}
+
+.question { 
+	background: white;
+	box-shadow: 0px 0px 5px #888;
+	margin: 2% auto;
+}

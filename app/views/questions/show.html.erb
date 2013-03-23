@@ -1,0 +1,11 @@
+<div id="question">
+	<h1 class="title"><%= @question.title %></h1>
+	<div class="content"><%= @question.content.html_safe %></div>
+
+	<% if @question.answerable? %>
+		<%= render "answers/form" %>
+	<% end %>
+	
+	<h3>Answers</h3>
+	<%= render @question.answers %>
+</div>

@@ -29,7 +29,7 @@ describe "User logs in" do
       before do
         visit new_user_session_path
         within "form#new_user" do
-          fill_in 'Email', :with => user.email
+          fill_in 'user_login', :with => user.email
           fill_in 'Password', :with => 'password1'
           click_button 'Log In'
         end
