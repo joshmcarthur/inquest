@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe AnswersController do
-  fixtures :users
+  fixtures :users, :questions
 
   context "when I am logged in" do
     before do
@@ -11,7 +11,7 @@ describe AnswersController do
     describe "POST create" do
       context "correct attributes are provided" do
         before do
-          post :create, :answer => {:content => 'answer'}
+          post :create, :question_id => questions(:test).id, :answer => {:content => 'answer'}
         end
 
         it "should redirect to the question page" do
@@ -29,7 +29,7 @@ describe AnswersController do
 
       context "incorrect attributes are provied" do
         before do
-          post :create, :answer => {:content => ''}
+          post :create, :question_id => questions(:test).id, :answer => {:content => ''}
         end
 
         it "should assign the answer" do
