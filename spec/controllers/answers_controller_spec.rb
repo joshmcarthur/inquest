@@ -8,6 +8,38 @@ describe AnswersController do
       sign_in users(:tester)
     end
 
+    describe "PUT accept" do
+
+      context "user is not the creator of the question" do
+        before do
+          sign_in users(:answerer)
+        end
+
+        it "should only be acceptable by the user who created the question" do
+          put :accept, :question_id => questions(:test), :id => questions(:test).answers.first
+          response.should_not be_ok
+        end
+      end
+
+      context "question creator is logged in" do
+        before do
+          put :accept, :question_id => questions(:test), :id => questions(:test).answers.first
+        end
+
+        it "should set an accepted answer" do
+          questions(:test).accepted_answer.should eq questions(:test).answers.first
+        end
+
+        it "should redirect to the question page" do
+          response.should redirect_to questions(:test)
+        end
+
+        it "should set a success message" do
+          flash[:notice].should_not be_blank
+        end
+      end
+    end
+
     describe "POST create" do
       context "correct attributes are provided" do
         before do
