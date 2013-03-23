@@ -1,0 +1,5 @@
+up_on_question:
+  votable: test (Question)
+  user: tester
+  direction: 'up'
+
