@@ -2,3 +2,8 @@ test:
   title: 'How do I use?'
   content: 'I would really like to use Inquest, how do I use it?'
   user: tester
+
+other:
+  title: 'Another question'
+  content: 'This is another question'
+  user: answerer
