@@ -7,8 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create(
+user = User.create(
   :email => 'admin@example.com', 
   :password => 'example user', 
   :password_confirmation => 'example user'
 )
+
+10.times do |num|
+  Question.create(
+    :user => user,
+    :title => "Question #{num}",
+    :content => "Content for question #{num}"
+  )
+end
