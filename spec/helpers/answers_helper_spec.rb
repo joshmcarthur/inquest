@@ -27,7 +27,7 @@ describe AnswersHelper do
       end
 
       it "should render the accepted icon" do
-        @output.should include "class=\"icon-ok-sign icon-2x\""
+        @output.should include "class=\"icon-ok-sign icon-3x\""
       end
     end
 
@@ -43,7 +43,7 @@ describe AnswersHelper do
       end
 
       it "should not render the accepted icon" do
-        @output.should_not include "class=\"icon-ok-sign icon-2x\""
+        @output.should_not include "class=\"icon-ok-sign icon-3x\""
       end
     end
 
@@ -59,7 +59,7 @@ describe AnswersHelper do
       end
 
       it "should render the accepted icon" do
-        @output.should include "class=\"icon-ok-sign icon-2x\""
+        @output.should include "class=\"icon-ok-sign icon-3x\""
       end
     end
   end
