@@ -1,6 +1,8 @@
 <div class="question row">
 	<div class="span12">
-		<h3><%= question.title %></h3>
+		<h3>
+			<%= link_to question.title, question %>
+		</h3>
 		<p>
 			<%= question.content %>
 		</p>

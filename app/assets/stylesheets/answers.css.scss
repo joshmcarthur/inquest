@@ -1,0 +1,16 @@
+// Place all the styles related to the answers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.answer {
+	.author {
+		background: #95A5A6;
+		padding: 20px;
+		margin-top: 10px;
+		color: white;
+
+		a, a:visited, a:active {
+			color: white;
+		}
+	}
+}
