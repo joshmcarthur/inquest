@@ -1,3 +1,8 @@
 // Place all the styles related to the questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a#new_question, a#new_question:visited, a#new_question:active {
+	padding: 2% 5%;
+	width: 90%;
+}
