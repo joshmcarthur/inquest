@@ -44,7 +44,7 @@ class Answer < ActiveRecord::Base
   #   # => true
   #
   # Returns true if this answer is answerable, or false if not
-  def answerable?
+  def acceptable?
     return false if self.question.nil?
     self.question.accepted_answer.nil?
   end
