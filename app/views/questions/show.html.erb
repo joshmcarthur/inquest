@@ -1,11 +1,11 @@
 <div id="question">
 	<h1 class="title"><%= @question.title %></h1>
-	<div class="content"><%= @question.content.html_safe %></div>
+	<div class="content"><%= @question.content_html %></div>
 
-	<%= render "answers/form" %>
 	
 	<div id="answers">
 		<h3>Answers</h3>
 		<%= render @question.answers.select(&:persisted?) %>
 	</div>
+	<%= render "answers/form" %>
 </div>
