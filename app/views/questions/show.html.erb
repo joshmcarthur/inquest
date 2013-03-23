@@ -3,9 +3,11 @@
 	<div class="content"><%= @question.content.html_safe %></div>
 
 	<% if @question.answerable? %>
-		<%= render "answers/form" %>
+	<%= render "answers/form" %>
 	<% end %>
 	
-	<h3>Answers</h3>
-	<%= render @question.answers %>
+	<div id="answers">
+		<h3>Answers</h3>
+		<%= render @question.answers.select(&:persisted?) %>
+	</div>
 </div>
