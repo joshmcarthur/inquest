@@ -15,7 +15,7 @@ describe AnswersController do
         end
 
         it "should redirect to the question page" do
-          response.should redirect_to assigns(:question)
+          response.should redirect_to questions(:test)
         end
 
         it "should save the answer" do
@@ -40,8 +40,8 @@ describe AnswersController do
           assigns(:answer).should_not be_persisted
         end
 
-        it "should render the new template" do
-          response.should render_template :new
+        it "should render the question show page" do
+          response.should render_template "questions/show"
         end
       end
     end
