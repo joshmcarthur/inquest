@@ -1,7 +1,8 @@
 <div class="answer">
 	<div class="row">
 		<div class="controls span1">
-			<i class="icon-ok-sign icon-2x"></i>
+			<%= accept_answer_link(answer) %>
+
 		</div>
 		<div class="content span11">
 			<%= answer.content.html_safe %>
