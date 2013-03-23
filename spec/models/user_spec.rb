@@ -27,8 +27,9 @@ describe User do
 
  
   it "should have answers" do
-    subject.answers << Answer.new
-    subject.answers.size.should eq 1
+    expect {
+      subject.answers << Answer.new
+    }.to change(subject.answers, :size).by(1)
   end
 
 end

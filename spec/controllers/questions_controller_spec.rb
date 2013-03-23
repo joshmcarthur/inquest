@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe QuestionsController do
+  fixtures :users
 
   context "when I am not logged in" do
     it "should require an authenticated user" do
@@ -12,11 +13,12 @@ describe QuestionsController do
 
   context "when I am logged in" do
     before do
-      sign_in User.create(:email => 'test@example.com', :password => 'password', :password_confirmation => 'password')
+      sign_in users(:tester)
     end
 
     describe "GET index" do
       before do
+        Question.stub(:all).and_return([Question.new, Question.new])
         get :index
       end
 
@@ -25,7 +27,7 @@ describe QuestionsController do
       end
 
       it "should instantiate a collection of questions" do
-        assigns(:questions).should eq Question.all
+        assigns(:questions).should have(2).instances_of(Question)
       end
     end
   end
