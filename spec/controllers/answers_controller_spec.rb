@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe AnswersController do
-  fixtures :users, :questions
+  fixtures :users, :questions, :answers
 
   context "when I am logged in" do
     before do
@@ -16,18 +16,18 @@ describe AnswersController do
         end
 
         it "should only be acceptable by the user who created the question" do
-          put :accept, :question_id => questions(:test), :id => questions(:test).answers.first
+          put :accept, :question_id => questions(:test), :id => answers(:test).id
           response.should_not be_ok
         end
       end
 
       context "question creator is logged in" do
         before do
-          put :accept, :question_id => questions(:test), :id => questions(:test).answers.first
+          put :accept, :question_id => questions(:test), :id => answers(:test).id
         end
 
         it "should set an accepted answer" do
-          questions(:test).accepted_answer.should eq questions(:test).answers.first
+          questions(:test).accepted_answer.should eq answers(:test)
         end
 
         it "should redirect to the question page" do
