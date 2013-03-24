@@ -102,7 +102,7 @@ class Question < ActiveRecord::Base
         if tag = Tag.find_by_title(tag_string.strip)
           memo << tag
         else
-          errors.add :tags, "invalid tag"
+          errors.add :tags,  "#{tag_string} is not valid"
         end
         memo
       end

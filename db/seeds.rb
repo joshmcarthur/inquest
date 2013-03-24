@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-30.times do 
+30.times do
   email = Faker::Internet.email
   User.create(
     :email => email,
@@ -26,7 +26,7 @@ questions = []
   )
 end
 
-300.times do 
+300.times do
   question = Question.all.sample
   user = User.all.sample
   question.answers.create(
@@ -35,5 +35,8 @@ end
   )
 end
 
-
-
+if Tag.count.zero?
+  %w( taggy love programming ).each do |default_tag|
+    Tag.where(title: default_tag).first_or_create
+  end
+end
