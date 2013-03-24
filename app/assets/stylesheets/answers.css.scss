@@ -23,6 +23,30 @@
 		}
 	}
 
+	a.vote_button, a.vote_button:active, i.icon-up-arrow, i.icon-down-arrow {
+		text-decoration: none;
+		color: #cfd4d5;
+
+		i {
+			&:hover {
+				color: #2ECC71;
+			}
+		}
+	}
+
+	span.vote_button.disabled {
+		color: #cfd4d5;
+	}
+
+	.vote-score {
+		font-size: 2.5em;
+		padding-left: 0.3em;
+		color: #cfd4d5;
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+
+
 	i.icon-ok-sign {
 		color: #2ECC71;
 	}
