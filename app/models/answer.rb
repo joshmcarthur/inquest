@@ -2,6 +2,9 @@ class Answer < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
   include Inquest::Voteable
   include Inquest::ContentMarkdownable
+  include PublicActivity::Model
+
+  tracked :owner => ->(controller, model) { controller && controller.send(:current_user) }
 
   belongs_to :user
   belongs_to :question
