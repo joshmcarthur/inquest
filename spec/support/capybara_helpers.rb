@@ -14,8 +14,8 @@ module CapybaraHelpers
     within 'form#new_question' do
       fill_in 'question[title]', :with => 'How do I use?'
       fill_in 'question[content]', :with => 'I would really like to use Inquest, how do I use it?'
-      yield #fill_in 'question[tags_string]', :with => 'tags1'
-      #click_button 'Create Question'
+      yield
+      click_button 'Create Question'
     end
   end
 

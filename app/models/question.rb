@@ -98,15 +98,15 @@ class Question < ActiveRecord::Base
   # Add errors if tags is not exist
   def validate_existing_of_tags
     unless tags_string.nil?
-      tags_array= tags_string.split(',')
-
-      tags_array.each do |tag_string|
-        if tag = Tag.find_by_title(tag_string)
-          self.tags << tag
+      tags_array = tags_string.split(',').inject([]) do |memo, tag_string|
+        if tag = Tag.find_by_title(tag_string.strip)
+          memo << tag
         else
           errors.add :tags, "invalid tag"
         end
+        memo
       end
+      self.tags = tags_array
     end
   end
 

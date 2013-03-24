@@ -51,8 +51,9 @@ describe QuestionsController do
     describe "POST create" do
       context "correct attributes are provided" do
         let(:tag) { tags(:test) }
+        let(:tag2) { tags(:test2) }
         before do
-          post :create, :question => {:title => 'New Question', :content => 'New Content', tags_string: "#{tag['title']}"}
+          post :create, :question => {:title => 'New Question', :content => 'New Content', tags_string: 'tagtest, tagtest2'}
         end
 
         it "should redirect to the question page" do
@@ -68,7 +69,7 @@ describe QuestionsController do
         end
 
         it "should assign the tag" do
-          assigns(:question).tags.should == [tag]
+          assigns(:question).tags.should == [tag, tag2]
         end
 
       end

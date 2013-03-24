@@ -5,6 +5,12 @@ describe "User tag question" do
 
   let(:user) { users(:tester) }
   let(:tag) { tags(:test) }
+  let(:tag2) { tags(:test2) }
+  let(:tag3) { tags(:test3) }
+  let(:tag4) { tags(:test4) }
+  let(:tag5) { tags(:test5) }
+
+
 
   describe "tag question" do
 
@@ -19,21 +25,28 @@ describe "User tag question" do
         context "1 existing tag" do
 
           before do
-            fill_in_question do
-              fill_in 'question[tags_string]', :with => "#{tag['title']}"
-              click_button 'Create Question'
-            end
+            fill_in_question { fill_in 'question[tags_string]', :with => 'tagtest' }
           end
 
           it "should show the new tags beside the question." do
             within ".tags" do
-              page.should have_content "#{tag['title']}"
+              page.should have_content 'tagtest'
             end
           end
 
         end
 
         context "5 existing tags" do
+          before do
+            fill_in_question { fill_in 'question[tags_string]', :with => 'tagtest, tagtest2, tagtest3, tagtest4, tagtest5' }
+          end
+
+          it "should show the new tags beside the question." do
+            within ".tags" do
+              page.should have_content 'tagtest'
+            end
+          end
+
         end
       end
     end
