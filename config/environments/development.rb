@@ -34,4 +34,9 @@ Inquest::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # MailCatcher config for development environment
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.default_url_options = { :host => 'aviation.local:3000' }
 end
