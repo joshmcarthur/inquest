@@ -227,6 +227,7 @@ DEPENDENCIES
   pg
   public_activity
   rails (= 3.2.12)
+  rake
   ransack
   redcarpet
   rspec-rails

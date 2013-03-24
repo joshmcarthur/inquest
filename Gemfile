@@ -37,12 +37,15 @@ group :assets do
 end
 
 
-
-group :development, :test do
+group :development do
   gem 'debugger'
-  gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'guard-bundler'
+end
+
+group :test do
+  gem 'rake'
+  gem 'rspec-rails'
   gem 'capybara'
   gem 'faker'
 end
