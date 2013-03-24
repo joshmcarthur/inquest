@@ -10,6 +10,8 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answer = current_user.answers.build
+    @question_comments = @question.comments
+    @comment = Comment.new
   end
 
   def new
