@@ -1,0 +1,6 @@
+<div class="alert alert-warning">
+	<h3>This question is no longer available:</h3>
+	<p>This question was marked as <%= @question.state %> by <%= @question.user.username %> at
+		<%= @question.state_last_updated.to_s(:short) %>, and can no longer be answered or edited.
+	</p>
+</div>

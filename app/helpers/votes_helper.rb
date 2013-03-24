@@ -8,7 +8,7 @@ module VotesHelper
       question_votes_path(voteable, :direction => direction)
     end
 
-    if current_user.voted_on?(voteable, direction)
+    if current_user.voted_on?(voteable, direction) 
       icon
     elsif !current_user.voted_on?(voteable)
       link_to path, :method => :post, :class => 'vote_button' do

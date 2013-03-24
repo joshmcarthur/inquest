@@ -1,6 +1,6 @@
 <div class="controls span1">
-	<%= vote_button(voteable, 'up') %>
-	<%= accept_answer_link(voteable) if voteable.is_a?(Answer) %>
+	<%= vote_button(voteable, 'up')  if @question.available? %>
+	<%= accept_answer_link(voteable) if voteable.is_a?(Answer) && @question.available? %>
 	<%= vote_score(voteable) %>
-	<%= vote_button(voteable, 'down') %>
+	<%= vote_button(voteable, 'down') if @question.available? %>
 </div>

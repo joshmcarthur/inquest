@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130324015416) do
+ActiveRecord::Schema.define(:version => 20130324034904) do
 
   create_table "answers", :force => true do |t|
     t.text     "content",                        :null => false
@@ -24,15 +24,18 @@ ActiveRecord::Schema.define(:version => 20130324015416) do
     t.integer  "votes_count", :default => 0,     :null => false
   end
 
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
   add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
 
   create_table "questions", :force => true do |t|
-    t.string   "title",                      :null => false
-    t.text     "content",                    :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.integer  "user_id",                    :null => false
-    t.integer  "votes_count", :default => 0, :null => false
+    t.string   "title",                             :null => false
+    t.text     "content",                           :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "user_id",                           :null => false
+    t.integer  "votes_count",        :default => 0, :null => false
+    t.string   "state"
+    t.datetime "state_last_updated"
   end
 
   add_index "questions", ["user_id"], :name => "index_questions_on_user_id"
