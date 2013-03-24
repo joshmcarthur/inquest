@@ -2,7 +2,7 @@
 	<div class="row">
 		<%= render "shared/voteable_controls", :voteable => answer %>
 		<div class="content span10">
-			<%= answer.content_html %>
+			<%= answer.content_html.html_safe %>
 		</div>
 
 		<div class="author span10 pull-right">

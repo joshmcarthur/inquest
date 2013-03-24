@@ -1,0 +1,7 @@
+<div class="well">
+  <p>Username: <%= user.username %></p>
+  <p>Email: <%= user.email %></p>
+  <p><%= "Question to Answer Ratio: #{user.questions.count}/#{user.answers.count}" %></p> 
+
+  <%= link_to 'Edit Profile', edit_user_path(user), :class => "btn" %>
+</div>

@@ -5,7 +5,7 @@
 				<div class="avatar">
 					<%= image_tag user.gravatar_url %>
 				</div>
-				<%= user.username %>
+				<%= link_to user.username, user_path(user) %>
 			</div>
 		</li>
 		<li>
