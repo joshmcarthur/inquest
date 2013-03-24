@@ -1,0 +1,7 @@
+<%= form_for(resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :post }) do |f| %>
+
+  <%= f.email_field :email, :autofocus => true, :placeholder => 'Email' %>
+  <%= f.submit t("devise.invitations.new.submit_button"), :class => 'btn btn-primary btn-large btn-block' %>
+<% end %>
+
+
