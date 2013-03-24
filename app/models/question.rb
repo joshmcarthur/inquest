@@ -1,6 +1,7 @@
 class Question < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
   include Inquest::Voteable
+  include Inquest::Commentable
   include Inquest::ContentMarkdownable
 
   belongs_to :user
