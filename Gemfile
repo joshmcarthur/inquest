@@ -12,6 +12,7 @@ gem 'bootstrap-sass'
 gem 'flat-ui-rails'
 gem 'font-awesome-sass-rails'
 gem 'gravtastic'
+gem 'kaminari'
 
 
 
