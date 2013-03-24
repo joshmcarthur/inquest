@@ -1,10 +1,10 @@
 class Question < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
+  include Inquest::Voteable
 
   belongs_to :user
   has_one :accepted_answer, :class_name => 'Answer', :conditions => 'accepted_at IS NOT NULL'
-  has_many :answers, :order => :accepted_at
-  has_many :votes, :as => :voteable
+  has_many :answers, :order => 'accepted_at, votes_count DESC'
 
   validates :title, :presence => true
   validates :content, :presence => true

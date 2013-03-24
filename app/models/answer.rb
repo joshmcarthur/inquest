@@ -1,11 +1,13 @@
 class Answer < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
+  include Inquest::Voteable
 
   belongs_to :user
   belongs_to :question
-  has_many :votes, :as => :voteable
+
 
   validates :content, :presence => true
+
 
   # Public: Mark this answer as accepted by updating the accepted_at timestamp.
   #
