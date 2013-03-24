@@ -1,11 +1,11 @@
 <div class="answer">
 	<div class="row">
 		<%= render "shared/voteable_controls", :voteable => answer %>
-		<div class="content span11">
-			<%= answer.content.html_safe %>
+		<div class="content span10">
+			<%= answer.content_html %>
 		</div>
 
-		<div class="author span11 pull-right">
+		<div class="author span10 pull-right">
 			<div class="row">
 				<div class="span9">
 					Submitted by <%= link_to answer.user.username, 'question.user' %>.

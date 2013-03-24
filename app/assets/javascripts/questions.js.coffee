@@ -12,6 +12,11 @@ Inquest.Questions.init = ->
 		container: $('div.epiceditor')[0], 
 		textarea: $($('div.epiceditor').attr('data-sync-with'))[0],
 		basePath: '/assets/editor',
+		theme: {
+			base: '/themes/base/epiceditor.css',
+			preview: '/themes/preview/github.css',
+			editor: '/themes/editor/epic-light.css'
+		}
 		clientSideStorage: false
 	).load()
 
