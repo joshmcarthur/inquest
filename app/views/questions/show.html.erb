@@ -1,11 +1,16 @@
 <div id="question">
-	<h1 class="title"><%= @question.title %></h1>
-	<div class="content"><%= @question.content_html %></div>
-
-	
-	<div id="answers">
-		<h3>Answers</h3>
-		<%= render @question.answers.select(&:persisted?) %>
+	<div class="row">
+		<%= render "shared/voteable_controls", :voteable => @question %>
+		<div class="span11">
+			<h1 class="title"><%= @question.title %></h1>
+			<div class="content"><%= @question.content_html %></div>
+			
+			<div id="answers">
+				<h3>Answers</h3>
+				<%= render @question.answers.select(&:persisted?) %>
+			</div>
+			<%= render "answers/form" %>
+		</div>
 	</div>
-	<%= render "answers/form" %>
 </div>
+

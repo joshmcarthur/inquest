@@ -1,3 +1,26 @@
 // Place all the styles related to the votes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+		a.vote_button, a.vote_button:active, i.icon-up-arrow, i.icon-down-arrow {
+			text-decoration: none;
+			color: #cfd4d5;
+
+			i {
+				&:hover {
+					color: #2ECC71;
+				}
+			}
+		}
+
+		span.vote_button.disabled {
+			color: #cfd4d5;
+		}
+
+		.vote-score {
+			font-size: 2.5em;
+			padding-left: 0.3em;
+			color: #cfd4d5;
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
