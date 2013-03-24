@@ -1,0 +1,17 @@
+<div id="owner_controls" class="alert alert-danger">
+
+	Owner options:&nbsp;
+	<div class="btn-group">
+  		<a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
+    		Change State
+    		<span class="caret"></span>
+    	</a>
+  		<ul class="dropdown-menu">
+  			<% Question.states.each do |state| %>
+  				<li><%= link_to state.humanize, question_path(:question => {:state => state}), :method => :put, :confirm => t('question.change_state.confirm') %></li>
+  			<% end %>
+  		</ul>
+  	</div>
+
+	<div class="clearfix"></div>
+</div>

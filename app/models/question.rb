@@ -33,6 +33,26 @@ class Question < ActiveRecord::Base
     self.user == user
   end
 
+  # Public: Return whether this question is 'available' or not.
+  # Available means whether it has a state set which prevents anyone from 
+  # changing it, as determined by unavailable_states
+  #
+  # Returns true if the question is available, and false if not.
+  def available?
+    !self.class.unavailable_states.include?(self.state)
+  end
+
+  # Public: Return the states available to the question.
+  #
+  # Returns an array of available states
+  def self.states
+    %w( closed irrelevant duplicate )
+  end
+
+  def self.unavailable_states
+    self.states
+  end
+
   private
 
   # Private: Update the state changed timestamp.
