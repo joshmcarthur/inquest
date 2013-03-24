@@ -1,3 +1,13 @@
 <%= render "new_question_button" %>
-<%= render @questions %>
-<%= paginate @questions %>
+<div class="row">
+	<div class="span9">
+		<%= render @questions %>
+		<%= paginate @questions %>
+	</div>
+	<div class="span3">
+		<ul id="activities" class="unstyled">
+			<%= render :partial => 'activities/activity_header' %>
+			<%= render :partial => 'activities/activity', :collection => @activities %>
+		</ul>
+	</div>
+</div>
