@@ -3,7 +3,12 @@
 [![Code Climate](https://codeclimate.com/github/joshmcarthur/inquest.png)](https://codeclimate.com/github/joshmcarthur/inquest) [![Build Status](https://travis-ci.org/joshmcarthur/inquest.png)](https://travis-ci.org/joshmcarthur/inquest)
 
 
-Inquest is a host-your own, private Q&A application, a la StackOverflow. Created at Railscamp NZ '13.
+Inquest is a host-your own, private Q&A application, a la StackOverflow. Created at Railscamp NZ '13. World, meet Inquest:
+
+
+![This is Inquest](doc/preview.png)
+
+---
 
 ### Features:
 
