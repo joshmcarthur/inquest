@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_filter :find_commentable
 
   def create
-    @comment = current_user.comments.build(:commentable => @commentable)
+    @comment = current_user.comments.build(:content => params[:comment][:content], :commentable => @commentable)
 
     if @comment.save
       redirect_to commentable_path, :notice => 'Comment created!'
