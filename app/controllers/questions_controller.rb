@@ -20,9 +20,15 @@ class QuestionsController < ApplicationController
     respond_with @question
   end
 
+  def update
+    @question = current_user.questions.find(params[:id])
+    @question.update_attributes(question_params)
+    respond_with @question
+  end
+
   private
 
   def question_params
-    params.require(:question).permit(:title, :content)
+    params.require(:question).permit(:title, :content, :state)
   end
 end
