@@ -1,0 +1,6 @@
+<%= search_form_for @search, :class => 'navbar-search pull-left' do |f| %>
+	<%= f.search_field :title_or_content_cont, :class => 'span3 search-query' %>
+	<%= button_tag :class => 'btn btn-primary' do %>
+		<%= glyph 'search' %>
+	<% end %>
+<% end %>
