@@ -1,0 +1,7 @@
+<h3>Add comment to @commentable.name</h3>
+<%= form_for @comment, :url => comment_url(@commentable) do |f| %>
+  <%= f.label :content %>
+  <%= f.text_area :content, :class => 'input-block-level' %>
+
+  <%= f.submit 'Create Question', :class => 'pull-right submit-without-container btn btn-large btn-primary' %>
+<% end %>
