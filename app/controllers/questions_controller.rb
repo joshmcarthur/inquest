@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   respond_to :html, :js, :json
 
   def index
-    @questions = Question.all
+    @questions = Question.page params[:page]
   end
 
   def show
