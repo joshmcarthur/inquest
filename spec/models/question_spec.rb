@@ -25,4 +25,11 @@ describe Question do
       subject.answers << Answer.new
     }.to change(subject.answers, :size).by(1)
   end
+
+  it "should update the state updated timestamp when the state is changed" do
+    expect {
+      subject.state = "closed"
+      subject.save
+    }.to change(subject, :state_last_updated)
+  end
 end

@@ -9,6 +9,8 @@ class Question < ActiveRecord::Base
   validates :title, :presence => true
   validates :content, :presence => true
 
+  before_save :timestamp_state_change, :if => :state_changed?
+
 
   # Public: Render the Markdown content of this question as HTML.
   #
@@ -29,5 +31,20 @@ class Question < ActiveRecord::Base
   # Returns true if the question is owned by the user, false otherwise.
   def owned_by?(user)
     self.user == user
+  end
+
+  private
+
+  # Private: Update the state changed timestamp.
+  # 
+  # This callback is fired to update a datetime attribute
+  # which reflects when the state was last changed. This
+  # allows us to display handy information in the view, such
+  # as 'Question closed by <user> at <date>'
+  # 
+  # Returns the object
+  def timestamp_state_change
+    self.state_last_updated = DateTime.now if state_changed?
+    self
   end
 end
