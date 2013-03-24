@@ -8,6 +8,7 @@ gem 'rails', '3.2.12'
 # Backend
 gem 'pg'
 gem 'devise'
+gem 'devise_invitable'
 gem 'strong_parameters'
 gem 'redcarpet'
 
