@@ -1,9 +1,6 @@
 <div class="answer">
 	<div class="row">
-		<div class="controls span1">
-			<%= accept_answer_link(answer) %>
-
-		</div>
+		<%= render "shared/voteable_controls", :voteable => answer %>
 		<div class="content span11">
 			<%= answer.content.html_safe %>
 		</div>

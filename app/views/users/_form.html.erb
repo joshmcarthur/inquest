@@ -1,7 +1,7 @@
 <%= form_for @user, :html => {:class => 'well'} do |f| %>
-  <% f.label :username %>
-  <% f.text_field :username %> 
+  <%= f.label :username %>
+  <%= f.text_field :username, :disabled => true %> 
 
-  <% f.label :email %>
-  <% f.text_field :email %>
+  <%= f.label :email %>
+  <%= f.text_field :email, :disabled => true %>
 <% end %>

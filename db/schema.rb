@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20130324015416) do
     t.integer  "votes_count", :default => 0,     :null => false
   end
 
-  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
   add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
 
   create_table "questions", :force => true do |t|
