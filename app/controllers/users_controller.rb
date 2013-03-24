@@ -6,4 +6,24 @@ class UsersController < ApplicationController
     @questions_asked = @user.questions.page(params[:page]).per(3)
     @questions_answered = Question.includes({:answers => :user}).where(:answers => {:user_id => @user.id}).page(params[:page]).per(3)
   end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+
+    if @user.update_with_password(user_params)
+      redirect_to @user
+    else
+      render :action => "edit"
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :current_password, :password, :password_confirmation, :email)
+  end
 end
