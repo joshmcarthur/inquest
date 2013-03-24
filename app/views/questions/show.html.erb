@@ -8,6 +8,10 @@
 
 			<%= render "questions/question_unavailable" if !@question.available? %>
 
+			<div id="question-comments">
+				<%= render "shared/comments", :commentable => @question %>
+			</end>
+			
 			<div id="answers">
 				<h3>Answers</h3>
 				<%= render @question.answers.select(&:persisted?) %>
