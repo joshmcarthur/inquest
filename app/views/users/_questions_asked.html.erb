@@ -1,4 +1,4 @@
 <h3>Questions asked by <%= @user.username %></h3>
 
-<%= render @questions_asked %>
-<%= paginate @questions_asked %>
+<%= render(@questions_asked) || content_tag(:div, 'No questions here...', :class => 'alert alert-info') %>
+<%= paginate @questions_asked, :param_name => "questions_asked_page" %>

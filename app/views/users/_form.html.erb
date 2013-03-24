@@ -1,18 +1,31 @@
 <%= form_for @user, :html => {:class => 'well'} do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %> 
+<div class="row">
+  <div class="span5">
 
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+    <%= f.label :username %>
+    <%= f.text_field :username %> 
 
-  <%= f.label :current_password %>
-  <%= f.password_field :current_password %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %> 
+    <%= f.label :current_password %>
+    <%= f.password_field :current_password %>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %> 
+    <%= f.label :password %>
+    <%= f.password_field :password %> 
 
-  <%= f.submit 'Save Profile', :class => 'pull-right btn btn-primary' %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %> 
+  </div>
+  <div class="span3">
+    <img src="<%= @user.gravatar_url %>" alt="">
+    <h3>Your Gravatar</h3>
+    <p>Based on your email, <%= @user.email %>. You can change this at <%= link_to "https://gravatar.com" %></p>
+  </div>
+</div>
+
+<div class="form-actions">
+  <%= f.submit 'Save Profile', :class => 'pull-right btn-large btn btn-primary' %>
+  <%= link_to 'Cancel', f.object, :class => 'btn btn-large pull-right' %>
+</div>
 <% end %>
