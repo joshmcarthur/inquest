@@ -1,6 +1,8 @@
 Inquest::Application.routes.draw do
 
-  devise_for :users
+  get "invitations/create"
+
+  devise_for :users, :controllers => {:invitations => 'users/invitations'}
 
   resources :users, :only => [:show, :edit, :update]
 

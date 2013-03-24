@@ -1,9 +1,15 @@
 body.login {
 	background-color: #34495E;
-}
 
-form#new_user {
-	input[type=text], input[type=password] {
-		width: 95%;
+	form {
+		input[type=text], input[type=email], input[type=password] {
+			width: 95%;
+		}
+
+		.help-block {
+			color: #ECF0F1;
+			text-align: left;
+		}
 	}
 }
+

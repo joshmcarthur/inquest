@@ -9,7 +9,10 @@
 			</div>
 		</li>
 		<li>
-			<%= button_to t('devise.sessions.sign_out'), destroy_user_session_path, :method => :delete, :class => 'btn btn-danger btn-logout' %>
+			<%= button_to t('devise.invitations.link'), new_user_invitation_path, :method => :get, :class => 'btn btn-success navbar-btn' %>
+		</li>
+		<li>
+			<%= button_to t('devise.sessions.sign_out'), destroy_user_session_path, :method => :delete, :class => 'btn btn-danger navbar-btn' %>
 		</li>
 	</ul>
 </div>

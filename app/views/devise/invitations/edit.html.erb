@@ -1,0 +1,18 @@
+
+<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :invitation_token %>
+
+  <%= f.text_field 	 	:username, :placeholder => 'Username' %>
+  <span class="help-block">
+  	We've taken a guess at the username you'd like to use, but you can change this to whatever you like - just so long as it's not already taken.
+  </span>
+
+  <%= f.password_field :password, :placeholder => 'Password' %>
+  <%= f.password_field :password_confirmation, :placeholder => 'Confirm password' %>
+  <span class="help-block">
+  	We need you to come up with a password you will use when logging in.
+  </span>
+
+  <p><%= f.submit t("devise.invitations.edit.submit_button"), :class => 'btn btn-large btn-block btn-primary' %></p>
+<% end %>
