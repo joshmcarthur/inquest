@@ -1,13 +1,12 @@
 require 'spec_helper'
 
 describe QuestionsController do
-  fixtures :users
-  fixtures :questions
+  fixtures :users, :questions, :tags
 
   let(:question) { questions(:test) }
   context "when I am not logged in" do
     it "should require an authenticated user" do
-      get :index 
+      get :index
       response.should redirect_to new_user_session_path
       flash[:alert].should_not be_blank
     end
@@ -51,8 +50,9 @@ describe QuestionsController do
 
     describe "POST create" do
       context "correct attributes are provided" do
+        let(:tag) { tags(:test) }
         before do
-          post :create, :question => {:title => 'New Question', :content => 'New Content'}
+          post :create, :question => {:title => 'New Question', :content => 'New Content', tags_string: "#{tag['title']}"}
         end
 
         it "should redirect to the question page" do
@@ -66,6 +66,11 @@ describe QuestionsController do
         it "should assign the created question" do
           assigns(:question).should be_a(Question)
         end
+
+        it "should assign the tag" do
+          assigns(:question).tags.should == [tag]
+        end
+
       end
 
       context "incorrect attributes are provied" do

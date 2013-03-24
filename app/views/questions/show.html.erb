@@ -11,13 +11,12 @@
 			<%= render "comments/comment_button", :commentable => @question %>
 			<%= render "comments/modal", :commentable => @question %>
 
-			
+			<div class="tags"><%= @question.tags_string %></div>
+
 			<div id="answers">
 				<h3>Answers</h3>
 				<%= render @question.answers.select(&:persisted?) %>
 			</div>
 			<%= render "answers/form" if @question.available? %>
 		</div>
-	</div>
 </div>
-

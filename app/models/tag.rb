@@ -1,3 +1,5 @@
 class Tag < ActiveRecord::Base
-  attr_accessible :name
+  include ActiveModel::ForbiddenAttributesProtection
+
+  attr_accessor :title
 end

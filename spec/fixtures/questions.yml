@@ -2,6 +2,7 @@ test:
   title: 'How do I use?'
   content: 'I would really like to use Inquest, how do I use it?'
   user: tester
+  tags: test
 
 other:
   title: 'Another question'

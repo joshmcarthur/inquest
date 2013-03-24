@@ -1,2 +1,5 @@
-tag1:
-  name: 'tester'
+test:
+  title: 'tagtest'
+
+another:
+  title: 'anothertag'

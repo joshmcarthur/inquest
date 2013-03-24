@@ -10,11 +10,32 @@ class Question < ActiveRecord::Base
   belongs_to :user
   has_one :accepted_answer, :class_name => 'Answer', :conditions => 'accepted_at IS NOT NULL'
   has_many :answers, :order => 'accepted_at, votes_count DESC'
+  has_many :votes, :as => :voteable
+  has_and_belongs_to_many :tags
 
   validates :title, :presence => true
   validates :content, :presence => true
 
   before_save :timestamp_state_change, :if => :state_changed?
+  validate :validate_existing_of_tags
+
+  # Public: To store the tags as a string
+  # This instance variable will be use for validate_existing_of_tags
+  # validate method to split the string to array by ','
+  attr_writer :tags_string
+
+  # Public: Render the Markdown content of this question as HTML.
+  #
+  # This method uses the Redcarpet library to convert the Markdown
+  # question content into HTML for rendering into a view.
+  #
+  # #FIXME it should also handle sanitizing the output, stripping potentially
+  # dangerous or disallowed tags.
+  #
+  # Returns the generated HTML for the question content
+  def content_html
+    Inquest::Application.config.markdown_renderer.render(self.content).html_safe
+  end
 
   # Public: Determine whether this question is owned by the given user.
   #
@@ -25,7 +46,7 @@ class Question < ActiveRecord::Base
   end
 
   # Public: Return whether this question is 'available' or not.
-  # Available means whether it has a state set which prevents anyone from 
+  # Available means whether it has a state set which prevents anyone from
   # changing it, as determined by unavailable_states
   #
   # Returns true if the question is available, and false if not.
@@ -54,15 +75,39 @@ class Question < ActiveRecord::Base
   private
 
   # Private: Update the state changed timestamp.
-  # 
+  #
   # This callback is fired to update a datetime attribute
   # which reflects when the state was last changed. This
   # allows us to display handy information in the view, such
   # as 'Question closed by <user> at <date>'
-  # 
+  #
   # Returns the object
   def timestamp_state_change
     self.state_last_updated = DateTime.now if state_changed?
     self
   end
+
+  def tags_string
+    @tags_string || tags.pluck(:title).join(',')
+  end
+
+
+  private
+
+  # Private: Validate the tag string contain all the tags that exist
+  # Add errors if tags is not exist
+  def validate_existing_of_tags
+    unless tags_string.nil?
+      tags_array= tags_string.split(',')
+
+      tags_array.each do |tag_string|
+        if tag = Tag.find_by_title(tag_string)
+          self.tags << tag
+        else
+          errors.add :tags, "invalid tag"
+        end
+      end
+    end
+  end
+
 end

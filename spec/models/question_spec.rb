@@ -2,22 +2,47 @@ require 'spec_helper'
 
 describe Question do
   fixtures :questions
+  fixtures :tags
 
-  subject do 
-    questions(:test)
+  let(:tag) { tags(:test) }
+
+  subject do
+    question = questions(:test)
+    question
   end
 
   context "with valid attributes" do
     it { should be_valid }
-  end
 
-  context "with invalid attributes" do
+    context "one existing tag in tags_string" do
+      before do
+        subject.tags_string = "#{tag.title}"
+        subject.valid? # to trigger the validate_existing_of_tags
+      end
 
-    before(:each) do
-      subject.title = ''
+      it  "should have the tags" do
+        subject.tags.should == [tag]
+      end
     end
 
-    it { should_not be_valid }
+  end
+
+  describe "with invalid attributes" do
+
+    context "empty title" do
+      before(:each) do
+        subject.title = ''
+      end
+      it { should_not be_valid }
+    end
+
+    context "with non-existing tag" do
+      before(:each) do
+        subject.tags_string = 'non-existing-tag'
+      end
+      it { should_not be_valid }
+    end
+
   end
 
   it "should have answers" do

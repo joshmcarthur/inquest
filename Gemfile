@@ -40,6 +40,7 @@ end
 
 
 group :development do
+  gem 'launchy'
   gem 'debugger'
   gem 'guard-rspec'
   gem 'guard-bundler'
