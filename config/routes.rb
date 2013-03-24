@@ -8,8 +8,10 @@ Inquest::Application.routes.draw do
 
   resources :questions do
     resource :votes, :only => [:create]
+    resource :comments, :only => [:create]
     resources :answers do
       resource :votes, :only => [:create]
+      resource :comments, :only => [:create]
       put :accept, :on => :member
     end
   end
