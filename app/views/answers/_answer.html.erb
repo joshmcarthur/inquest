@@ -1,11 +1,6 @@
 <div class="answer">
 	<div class="row">
-		<div class="controls span1">
-			<%= vote_button(answer, 'up') %>
-			<%= accept_answer_link(answer) %>
-			<%= vote_score(answer) %>
-			<%= vote_button(answer, 'down') %>
-		</div>
+		<%= render "shared/voteable_controls", :voteable => answer %>
 		<div class="content span11">
 			<%= answer.content.html_safe %>
 		</div>
