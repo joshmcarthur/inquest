@@ -24,10 +24,11 @@ class User < ActiveRecord::Base
   #
   # voteable - The voteable object (currently either question or answer) that should
   # be checked for in the votes collection
+  # direction - The direction to scope to, or either up or down if nil
   # 
   # Returns true if the voteable exists in the collection of votes, and false if not
-  def voted_on?(voteable)
-    self.votes.where(:voteable => voteable)
+  def voted_on?(voteable, direction = ['up', 'down'])
+    !self.votes.where(:voteable_id => voteable.id, :voteable_type => voteable.class.name).where(direction.nil? ? '1=1' : {:direction => direction}).count.zero?
   end
   
   # Public: Find the user record based on conditions passed to us by a devise controller.
