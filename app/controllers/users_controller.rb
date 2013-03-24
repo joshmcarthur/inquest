@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @questions_asked = @user.questions.page(params[:page]).per(3)
-    @questions_answered = Question.includes({:answers => :user}).where(:answers => {:user_id => @user.id}).page(params[:page]).per(3)
+    @questions_asked = @user.questions.page(params[:questions_asked_page]).per(3)
+    @questions_answered = Question.includes({:answers => :user}).where(:answers => {:user_id => @user.id}).page(params[:questions_answered_page]).per(3)
   end
 
   def edit
