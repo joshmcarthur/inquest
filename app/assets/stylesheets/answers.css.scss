@@ -3,14 +3,39 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .answer {
+
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: solid 1px #cfd4d5;
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	a#accept_answer, a#accept_answer:visited, a#accept_answer:active {
+		i.icon-ok-sign {
+			color: #cfd4d5;
+			text-decoration: none;
+
+			&:hover {
+				color: #2ECC71;
+			}
+		}
+	}
+
+	i.icon-ok-sign {
+		color: #2ECC71;
+	}
+
 	.author {
-		background: #95A5A6;
-		padding: 20px;
+		color: #7F8C8D;
+		padding: 10px;
 		margin-top: 10px;
-		color: white;
+		margin-bottom: 10px;
+
 
 		a, a:visited, a:active {
-			color: white;
+			color: #7F8C8D;
 		}
 	}
 }

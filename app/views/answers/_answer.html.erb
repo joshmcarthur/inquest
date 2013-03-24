@@ -1,10 +1,14 @@
 <div class="answer">
 	<div class="row">
-		<div class="content span12">
+		<div class="controls span1">
+			<%= accept_answer_link(answer) %>
+
+		</div>
+		<div class="content span11">
 			<%= answer.content.html_safe %>
 		</div>
 
-		<div class="author span12">
+		<div class="author span11 pull-right">
 			<div class="row">
 				<div class="span9">
 					Submitted by <%= link_to answer.user.username, 'question.user' %>.
