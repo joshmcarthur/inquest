@@ -4,4 +4,6 @@
 en:
   question:
     new: 'New Question'
+    change_state:
+      confirm: 'Are you sure you want to change the state of this question? This may prevent anyone from answering this question!'
   hello: "Hello world"
