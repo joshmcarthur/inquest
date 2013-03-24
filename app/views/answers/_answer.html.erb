@@ -1,8 +1,9 @@
 <div class="answer">
 	<div class="row">
 		<div class="controls span1">
+			<%= vote_button(answer, 'up') %>
 			<%= accept_answer_link(answer) %>
-
+			<%= vote_button(answer, 'down') %>
 		</div>
 		<div class="content span11">
 			<%= answer.content.html_safe %>
