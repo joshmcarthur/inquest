@@ -1,8 +1,0 @@
-<div class="wide-but-centered">
-<%= form_tag new_user_session_path, :id => 'login_form', :method => :post do |f| %>
-	<%= email_field_tag :email, '', :placeholder => 'Email' %>
-	<%= password_field_tag :password, '', :placeholder => 'Password' %>
-
-	<%= submit_tag t('devise.sessions.sign_in'), :class => 'btn btn-primary btn-large btn-block' %>
-<% end %>
-</div>

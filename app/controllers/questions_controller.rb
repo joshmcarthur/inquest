@@ -3,7 +3,8 @@ class QuestionsController < ApplicationController
   respond_to :html, :js, :json
 
   def index
-    @questions = Question.page params[:page]
+    @search = Question.search(params[:q])
+    @questions = @search.result(:distinct => true).page(params[:page])
   end
 
   def show

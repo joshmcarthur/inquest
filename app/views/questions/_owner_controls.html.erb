@@ -8,7 +8,7 @@
     	</a>
   		<ul class="dropdown-menu">
   			<% Question.states.each do |state| %>
-  				<li><%= link_to state.humanize, question_path(:question => {:state => state}), :method => :put, :confirm => t('question.change_state.confirm') %></li>
+  				<li><%= link_to state.humanize, question_path(@question, :question => {:state => state}), :method => :put, :confirm => t('question.change_state.confirm') %></li>
   			<% end %>
   		</ul>
   	</div>

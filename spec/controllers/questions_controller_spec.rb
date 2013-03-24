@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe QuestionsController do
   fixtures :users
+  fixtures :questions
 
+  let(:question) { questions(:test) }
   context "when I am not logged in" do
     it "should require an authenticated user" do
       get :index 
@@ -18,7 +20,7 @@ describe QuestionsController do
 
     describe "GET index" do
       before do
-        Question.stub(:all).and_return([Question.new, Question.new])
+        Question.stub(:page).and_return([Question.new, Question.new])
         get :index
       end
 
@@ -28,6 +30,22 @@ describe QuestionsController do
 
       it "should instantiate a collection of questions" do
         assigns(:questions).should have(2).instances_of(Question)
+      end
+
+      it "should paginate" do
+        Question.should_receive(:page)
+        get :index
+      end
+
+      it "should search" do
+        Question.should_receive(:search).and_call_original
+        get :index
+      end
+
+      it "should perform a valid search" do
+        Question.unstub(:page)
+        get :index, :q => {:title_or_content_cont => question.title }
+        assigns(:questions).should eq [question]
       end
     end
 

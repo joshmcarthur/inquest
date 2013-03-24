@@ -11,6 +11,7 @@
 	<div class="navbar-inner">
 		<div class="container">
 			<%= link_to 'InQuest', root_path, :class => 'brand' %>
+			<%= render "shared/search_form" %>
 			<%= render "shared/current_user", :user => current_user %>
 		</div>
 	</div>
