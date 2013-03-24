@@ -3,7 +3,9 @@ Inquest::Application.routes.draw do
   devise_for :users
 
   resources :questions do
+    resource :votes, :only => [:create]
     resources :answers do
+      resource :votes, :only => [:create]
       put :accept, :on => :member
     end
   end

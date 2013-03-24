@@ -4,6 +4,7 @@ class Question < ActiveRecord::Base
   belongs_to :user
   has_one :accepted_answer, :class_name => 'Answer', :conditions => 'accepted_at IS NOT NULL'
   has_many :answers, :order => :accepted_at
+  has_many :votes, :as => :voteable
 
   validates :title, :presence => true
   validates :content, :presence => true
