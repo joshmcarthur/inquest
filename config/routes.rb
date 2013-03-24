@@ -2,7 +2,7 @@ Inquest::Application.routes.draw do
 
   devise_for :users
 
-  resources :users, :only => [:show, :edit]
+  resources :users, :only => [:show, :edit, :update]
 
   resources :questions do
     resource :votes, :only => [:create]
