@@ -12,6 +12,7 @@ gem 'devise_invitable'
 gem 'strong_parameters'
 gem 'redcarpet'
 gem 'ransack'
+gem 'public_activity'
 
 # Frontend
 gem 'jquery-rails'

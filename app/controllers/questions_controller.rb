@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
   respond_to :html, :js, :json
 
   def index
+    @activities = PublicActivity::Activity.order('created_at DESC').limit(100)
     @search = Question.search(params[:q])
     @questions = @search.result(:distinct => true).page(params[:page])
   end

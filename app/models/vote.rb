@@ -1,5 +1,9 @@
 class Vote < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
+  include PublicActivity::Model
+
+  tracked :owner => ->(controller, model) { controller && controller.send(:current_user) }
+  
   belongs_to :voteable, :polymorphic => true, :counter_cache => true
   belongs_to :user
 
