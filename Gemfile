@@ -44,6 +44,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-bundler'
   gem 'capybara'
+  gem 'faker'
 end
 
 # To use ActiveModel has_secure_password
