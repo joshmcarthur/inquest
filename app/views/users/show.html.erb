@@ -1,6 +1,12 @@
-<h1><%= @user.username %> Profile</h1>
+<div id="profile">
+	<h1>
+		<%= image_tag @user.gravatar_url %>
+		<%= @user.username %>'s Profile
+		<%= link_to '(You!) - Edit', [:edit, @user], :class => 'btn btn-primary' if current_user == @user %>
+	</h1>
 
-<%= render @user %>
+	<%= render @user %>
 
-<%= render 'questions_asked' %>
-<%= render 'questions_answered' %>
+	<%= render 'questions_asked' %>
+	<%= render 'questions_answered' %>
+</div>
