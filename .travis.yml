@@ -4,6 +4,10 @@ rvm:
   - 1.9.3
   - ruby-head
   - rbx-19mode
-before_install:
+script: 
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
+before_script:
   - cp config/database.yml.ci config/database.yml
   - psql -c 'create database inquest_test;' -U postgres
