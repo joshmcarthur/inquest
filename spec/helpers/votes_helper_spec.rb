@@ -11,7 +11,7 @@ require 'spec_helper'
 #   end
 # end
 describe VotesHelper do
-  fixtures :users, :votes, :answers
+  fixtures :users, :votes, :answers, :questions
 
   let(:user) { users(:tester) }
   let(:voteable) { answers(:test) }
