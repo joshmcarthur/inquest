@@ -224,6 +224,7 @@ DEPENDENCIES
   guard-rspec
   jquery-rails
   kaminari
+  nokogiri
   pg
   public_activity
   rails (= 3.2.12)
