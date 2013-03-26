@@ -35,7 +35,7 @@ Take a look at the development Trello board for what's complete, what's being wo
 	and add configuration for `production`:
 	
 	``` yaml
-	test:
+	production:
   		adapter: postgresql
 		database: inquest_production
 		user: postgres
