@@ -1,0 +1,5 @@
+<%= form_for @comment || Comment.new, :url => comment_url(commentable) do |f| %>
+  <%= f.text_area :content, :class => 'input-block-level', :rows => 3 %>
+
+  <%= f.submit 'Add Comment', :class => 'pull-right btn btn-primary' %>
+<% end %>

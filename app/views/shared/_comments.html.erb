@@ -1,0 +1,10 @@
+<% comments.each do |comment| %>
+  <p><%= "#{comment.content} by #{comment.user.username}" %></p>
+<% end %>
+
+<h4>Add comment</h4>
+<%= form_for @comment, :url => comment_url(commentable) do |f| %>
+  <%= f.text_area :content, :class => 'input-block-level', :rows => 5 %>
+
+  <%= f.submit 'Add Comment', :class => 'pull-right btn btn-primary' %>
+<% end %>
