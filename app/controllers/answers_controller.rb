@@ -14,6 +14,7 @@ class AnswersController < ApplicationController
     if @answer.save
       redirect_to @question
     else
+      @comment = Comment.new
       render 'questions/show'
     end
   end
