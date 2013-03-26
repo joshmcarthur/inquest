@@ -1,0 +1,15 @@
+<div id="comments" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3>Comments</h3>
+	</div>
+
+	<div class="modal-body">
+		<ul class="unstyled">
+			<%= render(commentable.comments) || content_tag(:div, 'No comments yet.', :class => 'alert alert-info') %>
+		</ul>
+	</div>
+	<div class="modal-footer">
+		<%= render 'comments/form', :commentable => commentable %>
+	</div>
+</div>

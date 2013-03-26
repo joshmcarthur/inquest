@@ -13,6 +13,7 @@ gem 'strong_parameters'
 gem 'redcarpet'
 gem 'ransack'
 gem 'public_activity'
+gem 'nokogiri'
 
 # Frontend
 gem 'jquery-rails'
