@@ -3,6 +3,9 @@ class Question < ActiveRecord::Base
   include Inquest::Voteable
   include Inquest::Commentable
   include Inquest::ContentMarkdownable
+  include PublicActivity::Model
+
+  tracked :owner => ->(controller, model) { controller && controller.send(:current_user) }
 
   belongs_to :user
   has_one :accepted_answer, :class_name => 'Answer', :conditions => 'accepted_at IS NOT NULL'

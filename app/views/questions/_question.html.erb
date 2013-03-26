@@ -1,15 +1,13 @@
-<div class="question row">
-	<div class="span12">
+<div class="question">
 		<h3>
 			<%= link_to question.title, question %>
 		</h3>
 		<p>
-			<%= question.content %>
+			<%= truncate(question.content, :length => 150) %>
 		</p>
 
 		<div class="submitted-by">
 			Submitted by <%= link_to question.user.username, question.user %>
 			at <%= question.created_at.to_s(:short) %>
 		</div>
-	</div>
 </div>

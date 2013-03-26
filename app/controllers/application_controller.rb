@@ -3,6 +3,8 @@ class Inquest::MustOwnQuestionException < Exception
 end
 
 class ApplicationController < ActionController::Base
+  include PublicActivity::StoreController
+  
   protect_from_forgery
   layout :layout_by_resource
   before_filter :set_search

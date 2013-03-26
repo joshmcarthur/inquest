@@ -1,4 +1,4 @@
-source 'http://rubygems.rc'
+source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 
@@ -12,6 +12,7 @@ gem 'devise_invitable'
 gem 'strong_parameters'
 gem 'redcarpet'
 gem 'ransack'
+gem 'public_activity'
 
 # Frontend
 gem 'jquery-rails'
@@ -36,13 +37,20 @@ group :assets do
 end
 
 
-
-group :development, :test do
+group :development do
   gem 'debugger'
-  gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'guard-bundler'
+end
+
+group :test do
+  gem 'rake'
   gem 'capybara'
+end
+
+group :development, :test do
+  gem 'faker'
+  gem 'rspec-rails'
 end
 
 # To use ActiveModel has_secure_password
