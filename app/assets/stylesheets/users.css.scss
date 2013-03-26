@@ -4,6 +4,20 @@
 	}
 }
 
+.inline-user-display {
+	line-height: 18px;
+
+	color: #2C3E50;
+	font-weight: bold;
+	text-decoration: none;
+
+	img {
+		margin-top: -4px;
+		margin-right: 4px;
+		border-radius: 50%;
+	}
+}
+
 form.well {
 	.form-actions {
 		.btn {
