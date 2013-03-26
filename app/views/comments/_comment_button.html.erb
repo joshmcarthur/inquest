@@ -1,0 +1,7 @@
+<%= link_to '#comments', :role => 'button', :class => 'btn pull-right', :'data-toggle' => 'modal' do %>
+	<%= glyph :comment %>
+	Comments
+	<%= badge(commentable.comments.count) %>
+<% end %>
+
+<br class="clearfix" />

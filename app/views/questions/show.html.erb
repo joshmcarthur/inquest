@@ -8,9 +8,9 @@
 
 			<%= render "questions/question_unavailable" if !@question.available? %>
 
-			<div id="question-comments">
-				<%= render :partial => "shared/comments", :locals => {:commentable => @question, :comments => @question_comments} %>
-			</end>
+			<%= render "comments/comment_button", :commentable => @question %>
+			<%= render "comments/modal", :commentable => @question %>
+
 			
 			<div id="answers">
 				<h3>Answers</h3>
