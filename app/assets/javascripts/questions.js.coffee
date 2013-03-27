@@ -22,4 +22,5 @@ Inquest.Questions.init = ->
 
 
 $ ->
-	Inquest.Questions.init()
+	if $('.epiceditor').length > 0
+		Inquest.Questions.init()
