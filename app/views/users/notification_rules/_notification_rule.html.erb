@@ -1,0 +1,7 @@
+<%= content_tag :div, :class => 'notification-rule alert alert-success' do %>
+	<p class="pull-left">
+	When one of my <strong><%= notification_rule.class_name.pluralize %></strong> is <strong><%= notification_rule.action %></strong>, <strong><%= notification_rule.reactor.reaction_description %></strong>.
+</p>
+
+	<%= button_to "&times;".html_safe, [:users, notification_rule], :method => :delete, :confirm => 'Are you sure you no longer want to receive notifications matching this rule?', :class => 'close pull-right' %>
+<% end %>
