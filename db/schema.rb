@@ -66,6 +66,13 @@ ActiveRecord::Schema.define(:version => 20130327074256) do
 
   add_index "notification_rules", ["user_id"], :name => "index_notification_rules_on_user_id"
 
+  create_table "organizations", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "subdomain",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "questions", :force => true do |t|
     t.string   "title",                             :null => false
     t.text     "content",                           :null => false
