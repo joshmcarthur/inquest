@@ -2,4 +2,4 @@
 
 <%= render "form" %>
 
-<%= render(@notification_rules) || content_tag(:div, "No notification rules set up yet.", :class => 'alert alert-info') %>
+<%= render(current_user.notification_rules.select(&:persisted?)) || content_tag(:div, "No notification rules set up yet.", :class => 'alert alert-info') %>
