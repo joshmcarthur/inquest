@@ -1,0 +1,5 @@
+<h1>Your Notifications</h1>
+
+<%= render "form" %>
+
+<%= render(@notification_rules) || content_tag(:div, "No notification rules set up yet.", :class => 'alert alert-info') %>
