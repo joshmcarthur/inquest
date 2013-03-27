@@ -6,6 +6,8 @@ class NotificationRule < ActiveRecord::Base
   validates :reactor_name, :inclusion => {:in => Inquest::Application.config.reactor_classes.map(&:name) } 
   validate :action_in_class_notifiable_actions
 
+  validates :action, :uniqueness => {:scope => [:user_id, :class_name] }
+
   def klass
     Inquest::Application.config.notifiable_classes.select do |nc|
       nc.name == self.class_name.to_s
@@ -13,7 +15,7 @@ class NotificationRule < ActiveRecord::Base
   end
 
   def reactor
-    Inquest::Reactor.subclasses.select do |sc|
+    Inquest::Application.config.reactor_classes.select do |sc|
       sc.name == self.reactor_name.to_s 
     end.first
   end
