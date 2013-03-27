@@ -3,6 +3,7 @@ class Answer < ActiveRecord::Base
   include Inquest::Voteable
   include Inquest::Commentable
   include Inquest::ContentMarkdownable
+  include Inquest::Notifiable
   include PublicActivity::Model
 
   tracked :owner => ->(controller, model) { controller && controller.send(:current_user) }
@@ -12,6 +13,13 @@ class Answer < ActiveRecord::Base
 
 
   validates :content, :presence => true
+
+
+  # Public: Define the actions that are notifiable for this model.
+  # Returns an array of notifiable actions
+  def self.notifiable_actions
+    %w( upvoted downvoted commented_on voted_on )
+  end
 
 
   # Public: Mark this answer as accepted by updating the accepted_at timestamp.

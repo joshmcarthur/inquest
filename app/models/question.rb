@@ -3,6 +3,7 @@ class Question < ActiveRecord::Base
   include Inquest::Voteable
   include Inquest::Commentable
   include Inquest::ContentMarkdownable
+  include Inquest::Notifiable
   include PublicActivity::Model
 
   tracked :owner => ->(controller, model) { controller && controller.send(:current_user) }
@@ -16,6 +17,11 @@ class Question < ActiveRecord::Base
 
   before_save :timestamp_state_change, :if => :state_changed?
 
+  # Public: Define the actions that are notifiable for this model.
+  # Returns an array of notifiable actions
+  def self.notifiable_actions
+    %w( answered upvoted downvoted commented_on created voted_on )
+  end
 
   # Public: Determine whether this question is owned by the given user.
   #
