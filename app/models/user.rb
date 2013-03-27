@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :votes
   has_many :comments
+  has_many :notification_rules
   has_gravatar :size => '80', :secure => false
 
 
