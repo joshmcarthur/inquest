@@ -2,18 +2,22 @@ class Users::NotificationRulesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @notification_rules = current_user.notification_rules
     @notification_rule = NotificationRule.new
   end
 
   def create
     @notification_rule = current_user.notification_rules.build(notification_rule_params)
-    respond_with @notification_rule, location: user_notification_rules_path
+
+    if @notification_rule.save
+      redirect_to users_notification_rules_path, notice: 'Notification has been set up.'
+    else
+      render :index
+    end
   end
 
   def destroy
     @notification_rule = current_user.notification_rules.destroy(params[:id])
-    respond_with @notification_rule
+    redirect_to users_notification_rules_path, notice: 'You will no longer receive notifications matching this criteria.'
   end
 
   private
