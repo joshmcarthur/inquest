@@ -1,0 +1,2 @@
+<% question = activity.trackable.commentable.is_a?(Answer) ? activity.trackable.commentable.question : activity.trackable.commentable %>
+commented on <%= activity.trackable.commentable.is_a?(Answer) ? "an answer on" : "" %> <%= link_to question.title, question %>.

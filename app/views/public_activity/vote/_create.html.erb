@@ -1,2 +1,2 @@
 <% question = activity.trackable.voteable.is_a?(Answer) ? activity.trackable.voteable.question : activity.trackable.voteable %>
-voted <%= activity.trackable.direction %> <%= activity.trackable.voteable.is_a?(Answer) ? "an answer on" : "" %> <%= link_to question.title, question %>.
+voted <%= activity.trackable.direction %> <%= activity.trackable.voteable.is_a?(Answer) ? "an answer on" : "" %> <%= link_to question.title, question %>.a
