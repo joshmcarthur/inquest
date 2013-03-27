@@ -1,14 +1,16 @@
-<%= form_for [:users, @notification_rule], :html => {:class => 'form-inline'} do |f| %>
+<%= form_for [:users, @notification_rule], :html => {:class => 'well form-inline'} do |f| %>
 	<%= f.label :class_name %>
-	<%= f.select :class_name, class_name_options_for_select %>
+	<%= f.select :class_name, class_name_options_for_select, {}, :class => 'span2', :'data-reveal-section' => '_actions' %>
 
-	<%= f.label :action %>
-	<%= f.select :action, action_options_for_select %>
+	<% Inquest::Application.config.notifiable_classes.each do |klass| %>
+		<%= content_tag :span, :id => "#{klass.name}_actions", :class => 'hide-unless-selected hide' do %>
+			<%= f.label :action %>
+			<%= f.select :action, klass.notifiable_actions, {}, :disabled => true %>
+		<% end %>
+	<% end %>
 
 	<%= f.label :reactor_name %>
-	<%= f.collection_select :reactor_name, Inquest::Reactor.subclasses, :name, :reaction_description %>
+	<%= f.collection_select :reactor_name, Inquest::Application.config.reactor_classes, :name, :reaction_description %>
 
-	<div class="form-actions">
-		<%= f.submit 'Save Notification', :class => 'btn btn-primary' %>
-	</div>
+	<%= f.submit 'Save Notification', :class => 'btn btn-primary' %>
 <% end %>
