@@ -14,6 +14,7 @@ gem 'redcarpet'
 gem 'ransack'
 gem 'public_activity'
 gem 'nokogiri'
+gem 'disclosure'
 
 # Frontend
 gem 'jquery-rails'
