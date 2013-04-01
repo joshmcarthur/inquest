@@ -2,7 +2,7 @@ class Users::NotificationRulesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @notification_rule = NotificationRule.new
+    @notification_rule = Disclosure::Rule.new
   end
 
   def create
@@ -23,7 +23,7 @@ class Users::NotificationRulesController < ApplicationController
   private
 
   def notification_rule_params
-    params.require(:notification_rule).permit(:class_name, :reactor_name, :action)
+    params.require(:rule).permit(:notifier_class, :reactor_class, :action)
   end
 
 end
