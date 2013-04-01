@@ -1,5 +1,6 @@
 <h1>Your Notifications</h1>
 
-<%= render "form" %>
 
-<%= render(current_user.notification_rules.select(&:persisted?)) || content_tag(:div, "No notification rules set up yet.", :class => 'alert alert-info') %>
+<%= render(:partial => "users/notification_rules/notification_rule", :collection => current_user.notification_rules.select(&:persisted?)) || content_tag(:div, "No notification rules set up yet.", :class => 'alert alert-info') %>
+
+<%= render "form" %>
