@@ -17,10 +17,18 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %> 
   </div>
-  <div class="span3">
+  <div class="span5">
     <img src="<%= @user.gravatar_url %>" alt="">
     <h3>Your Gravatar</h3>
     <p>Based on your email, <%= @user.email %>. You can change this at <%= link_to "https://gravatar.com" %></p>
+
+    <h3>Notifications</h3>
+    <p>
+      <%= link_to users_notification_rules_path, :class => 'btn' do %>
+        <%= glyph 'envelope' %>
+        Change the notifications you receive
+      <% end %>
+    </p>
   </div>
 </div>
 

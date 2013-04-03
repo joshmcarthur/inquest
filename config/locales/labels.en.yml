@@ -1,0 +1,7 @@
+en:
+  helpers:
+    label:
+      disclosure/rule:
+        notifier_class: "When one of my"
+        action: "is"
+        reactor_class: "then"

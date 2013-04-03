@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130324051108) do
+ActiveRecord::Schema.define(:version => 20130401054710) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -54,6 +54,35 @@ ActiveRecord::Schema.define(:version => 20130324051108) do
   end
 
   add_index "comments", ["commentable_id", "user_id"], :name => "index_comments_on_commentable_id_and_user_id"
+
+  create_table "disclosure_rules", :force => true do |t|
+    t.integer  "owner_id"
+    t.string   "notifier_class"
+    t.string   "reactor_class"
+    t.string   "action"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "disclosure_rules", ["owner_id"], :name => "index_disclosure_rules_on_owner_id"
+
+  create_table "notification_rules", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "class_name"
+    t.string   "reactor_name"
+    t.string   "action"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "notification_rules", ["user_id"], :name => "index_notification_rules_on_user_id"
+
+  create_table "organizations", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "subdomain",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "questions", :force => true do |t|
     t.string   "title",                             :null => false

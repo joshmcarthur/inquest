@@ -2,6 +2,11 @@ Inquest::Application.routes.draw do
 
 
   devise_for :users, :controllers => {:invitations => 'users/invitations'}
+  namespace :users do
+    resources :notification_rules 
+  end
+
+
 
   resources :users, :only => [:show, :edit, :update]
   resources :activities, :only => :index
@@ -16,6 +21,7 @@ Inquest::Application.routes.draw do
     end
   end
   
+
   root :to => 'questions#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
