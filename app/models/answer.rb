@@ -71,7 +71,11 @@ class Answer < ActiveRecord::Base
   private
 
   def touch_question
+    Question.public_activity_off
     self.question.save if self.question
+
     true
+  ensure
+    Question.public_activity_on
   end
 end
