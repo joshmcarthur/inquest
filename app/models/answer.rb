@@ -3,7 +3,6 @@ class Answer < ActiveRecord::Base
   include Inquest::Voteable
   include Inquest::Commentable
   include Inquest::ContentMarkdownable
-  include Inquest::Notifiable
   include PublicActivity::Model
 
   tracked :owner => ->(controller, model) { controller && controller.send(:current_user) }

@@ -3,7 +3,6 @@ class Question < ActiveRecord::Base
   include Inquest::Voteable
   include Inquest::Commentable
   include Inquest::ContentMarkdownable
-  include Inquest::Notifiable
   include PublicActivity::Model
 
   attr_accessor :accepted_answer_has_changed
