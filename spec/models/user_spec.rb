@@ -9,6 +9,11 @@ describe User do
 
   context "with valid attributes" do
     it { should be_valid }
+
+    it "should create default notification rules" do
+      subject.send(:create_default_notification_rules)
+      subject.notification_rules.count.should eq 2
+    end
   end
 
   context "with missing attributes" do

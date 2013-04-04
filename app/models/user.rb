@@ -17,7 +17,10 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :votes
   has_many :comments
+  has_many :notification_rules, :class_name => 'Disclosure::Rule', :foreign_key => :owner_id
   has_gravatar :size => '80', :secure => false
+
+  after_create :create_default_notification_rules
 
 
   # Public: Determine whether this user has voted on a given object before.
@@ -46,5 +49,26 @@ class User < ActiveRecord::Base
   # Returns the found user, or nil
   def self.find_for_database_authentication(conditions)
     where('email = ? OR username = ?', conditions[:login], conditions[:login]).first
+  end
+
+  private
+
+  # Private: Create default notifications that users should receive.
+  # By default these are:
+  # * question created
+  # * question answered
+  #
+  # Returns the notifications associated with the user
+  def create_default_notification_rules
+    Inquest::Application.config.default_notification_rules.each do |model, actions|
+      actions.each do |action|
+        Disclosure::Rule.where(
+          :notifier_class => model, 
+          :action => action, 
+          :owner_id => self.id, 
+          :reactor_class => 'Disclosure::EmailReactor')
+        .first_or_create
+      end
+    end
   end
 end
