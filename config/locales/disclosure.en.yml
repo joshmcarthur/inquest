@@ -2,7 +2,7 @@ en:
   disclosure:
     email_reactor:
       question:
-        created:
+        create:
           subject: 'New Question on Inquest'
         answered:
           subject: 'Question Answered on Inquest'
