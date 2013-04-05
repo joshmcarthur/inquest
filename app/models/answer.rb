@@ -10,9 +10,6 @@ class Answer < ActiveRecord::Base
   belongs_to :user
   belongs_to :question
 
-  after_save :touch_question
-
-
   validates :content, :presence => true
 
 
@@ -32,7 +29,6 @@ class Answer < ActiveRecord::Base
   #
   # Returns the updated object
   def accept!
-    self.question.accepted_answer_has_changed = true
     self.update_attribute(:accepted_at, DateTime.now)
     self
   end
@@ -67,14 +63,4 @@ class Answer < ActiveRecord::Base
     self.question.accepted_answer.nil?
   end
 
-  private
-
-  def touch_question
-    Question.public_activity_off
-    self.question.save if self.question
-
-    true
-  ensure
-    Question.public_activity_on
-  end
 end
