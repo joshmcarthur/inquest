@@ -4,6 +4,10 @@ module Users::NotificationRulesHelper
   end
 
   def action_options_for_select(klass)
-    klass.notifiable_actions.map { |action| [action.gsub(/[e|ed]*\Z/, '') + 'ed', action] }
+    klass.notifiable_actions.map { |action| [human_readable_action(action), action] }
+  end
+
+  def human_readable_action(action)
+    action.gsub(/[e|ed]*\Z/, '') << "ed"
   end
 end
