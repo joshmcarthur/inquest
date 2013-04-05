@@ -12,7 +12,7 @@ describe User do
 
     it "should create default notification rules" do
       subject.send(:create_default_notification_rules)
-      subject.notification_rules.count.should eq 2
+      subject.should have(2).notification_rules
     end
   end
 
@@ -36,5 +36,4 @@ describe User do
       subject.answers << Answer.new
     }.to change(subject.answers, :size).by(1)
   end
-
 end
