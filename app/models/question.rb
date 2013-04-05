@@ -44,6 +44,13 @@ class Question < ActiveRecord::Base
     self.states
   end
 
+
+  # Public: Define the actions that are notifiable for this model.
+  # Returns an array of notifiable actions
+  def self.notifiable_actions
+    %w( create )
+  end
+
   private
 
   # Private: Update the state changed timestamp.

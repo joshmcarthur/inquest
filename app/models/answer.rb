@@ -16,7 +16,7 @@ class Answer < ActiveRecord::Base
   # Public: Define the actions that are notifiable for this model.
   # Returns an array of notifiable actions
   def self.notifiable_actions
-    %w( upvoted downvoted commented_on voted_on )
+    %w( accepted )
   end
 
 
