@@ -4,5 +4,6 @@ en:
       question:
         create:
           subject: 'New Question on Inquest'
-        answered:
+      answer:
+        accepted:
           subject: 'Question Answered on Inquest'

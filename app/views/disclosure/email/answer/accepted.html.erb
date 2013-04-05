@@ -343,7 +343,7 @@
                    <tr>
                      <td valign="top">
                        <div mc:edit="std_preheader_content">
-                       	Question titled <%= @model.title %> has been marked with an accepted answer.
+                       	Question titled <%= @model.question.title %> has been marked with an accepted answer.
                       </div>
                     </td>
                     <!-- *|IFNOT:ARCHIVE_PAGE|* -->
@@ -388,15 +388,15 @@
                   <tr>
                     <td valign="top">
                       <div mc:edit="std_content00">
-                        <h1 class="h1"><%= @model.title %></h1>
+                        <h1 class="h1"><%= @model.question.title %></h1>
                         <h4 class="h4">Has an accepted answer!</h4>
 
-                        <%= @model.accepted_answer.content_html %>
+                        <%= @model.content_html %>
 
                         <br>
                         <br>
 
-                        <h1 class="h1" style="text-align:center;"><%= link_to 'View this Question', "#{ActionMailer::Base.default_url_options[:host]}/questions/#{@model.id}" %></h1>
+                        <h1 class="h1" style="text-align:center;"><%= link_to 'View this Question', "#{ActionMailer::Base.default_url_options[:host]}/questions/#{@model.question.id}" %></h1>
                       </div>
                     </td>
                   </tr>
