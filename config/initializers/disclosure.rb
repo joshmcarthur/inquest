@@ -1,5 +1,5 @@
 Disclosure.configure do |config|
-  config.notifier_classes = [Question, Answer]
+  config.notifier_classes = []
 end
 
 Disclosure::EmailReactor.class_eval do
