@@ -10,3 +10,6 @@ en:
       comment:
         create:
           subject: 'New Comment on Inquest'
+      vote:
+        create:
+          subject: 'Vote added on Inquest'
