@@ -1,0 +1,6 @@
+test:
+  class_name: "Answer"
+  reactor_name: "EmailReactor"
+  user: tester
+  action: "commented_on"
+

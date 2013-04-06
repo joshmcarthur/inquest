@@ -16,7 +16,6 @@ class Question < ActiveRecord::Base
 
   before_save :timestamp_state_change, :if => :state_changed?
 
-
   # Public: Determine whether this question is owned by the given user.
   #
   # Simple shortcut to tidy up views.
@@ -43,6 +42,13 @@ class Question < ActiveRecord::Base
 
   def self.unavailable_states
     self.states
+  end
+
+
+  # Public: Define the actions that are notifiable for this model.
+  # Returns an array of notifiable actions
+  def self.notifiable_actions
+    %w( create )
   end
 
   private

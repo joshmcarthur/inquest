@@ -10,8 +10,14 @@ class Answer < ActiveRecord::Base
   belongs_to :user
   belongs_to :question
 
-
   validates :content, :presence => true
+
+
+  # Public: Define the actions that are notifiable for this model.
+  # Returns an array of notifiable actions
+  def self.notifiable_actions
+    %w( accepted )
+  end
 
 
   # Public: Mark this answer as accepted by updating the accepted_at timestamp.
@@ -56,4 +62,5 @@ class Answer < ActiveRecord::Base
     return false if self.question.nil?
     self.question.accepted_answer.nil?
   end
+
 end

@@ -1,0 +1,20 @@
+<%= form_for [:users, @notification_rule], :url => users_notification_rules_path, :html => {:class => 'well form-inline'} do |f| %>
+<fieldset>
+	<legend>New Notification Rule</legend>
+
+	<%= f.label :notifier_class %>
+	<%= f.select :notifier_class, class_name_options_for_select, {}, :class => 'span2', :'data-reveal-section' => '_actions' %>
+
+	<% [Question, Answer, Comment, Vote].each do |klass| %>
+	<%= content_tag :span, :id => "#{klass.name}_actions", :class => 'hide-unless-selected hide' do %>
+	<%= f.label :action %>
+	<%= f.select :action, action_options_for_select(klass), {}, :disabled => true %>
+	<% end %>
+	<% end %>
+
+	<%= f.label :reactor_class %>
+	<%= f.collection_select :reactor_class, Disclosure.configuration.reactor_classes, :name, :reaction_description %>
+	
+	<%= f.submit 'Save Notification', :class => 'btn btn-primary' %>
+</fieldset>
+<% end %>
