@@ -7,3 +7,6 @@ en:
       answer:
         accepted:
           subject: 'Question Answered on Inquest'
+      comment:
+        create:
+          subject: 'New Comment on Inquest'

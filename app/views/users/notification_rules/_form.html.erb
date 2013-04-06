@@ -5,7 +5,7 @@
 	<%= f.label :notifier_class %>
 	<%= f.select :notifier_class, class_name_options_for_select, {}, :class => 'span2', :'data-reveal-section' => '_actions' %>
 
-	<% [Question, Answer].each do |klass| %>
+	<% [Question, Answer, Comment, Vote].each do |klass| %>
 	<%= content_tag :span, :id => "#{klass.name}_actions", :class => 'hide-unless-selected hide' do %>
 	<%= f.label :action %>
 	<%= f.select :action, action_options_for_select(klass), {}, :disabled => true %>
