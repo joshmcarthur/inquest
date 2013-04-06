@@ -65,7 +65,7 @@ module Inquest
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.default_notification_rules = {"Question" => ["created", "answered"]}
+    config.default_notification_rules = {"Question" => ["create"], "Answer" => ["accepted"]}
 
   end
 end

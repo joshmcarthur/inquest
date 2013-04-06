@@ -2,6 +2,6 @@ en:
   helpers:
     label:
       disclosure/rule:
-        notifier_class: "When one of my"
-        action: "is"
+        notifier_class: "When "
+        action: "are"
         reactor_class: "then"
