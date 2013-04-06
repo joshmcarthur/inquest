@@ -1,13 +1,40 @@
 <div class="question">
-		<h3>
-			<%= link_to question.title, question %>
-		</h3>
-		<p>
-			<%= truncate(question.content, :length => 150) %>
-		</p>
+	<div class="row">
 
-		<div class="submitted-by">
-			Submitted by <%= link_to question.user.username, question.user %>
-			at <%= question.created_at.to_s(:short) %>
+
+		<div class="span7">
+			<h3>
+				<%= link_to question.title, question %>
+			</h3>
+			<p>
+				<%= truncate(question.content, :length => 150) %>
+			</p>
+
+			<div class="submitted-by">
+				Submitted by <%= link_to question.user.username, question.user %>
+				at <%= question.created_at.to_s(:short) %>
+			</div>
 		</div>
+
+		<div class="span1 meta accepted">
+			<p>
+				<% if question.accepted_answer %>
+				<%= glyph 'ok-sign', 2, 'accepted' %>
+				<% else %>
+				<%= glyph 'ok-sign', 2 %>
+				<% end %>
+			</p>
+			<p>
+				<%= content_tag :div, :title => pluralize(question.comments.count, "comment"), :class => 'label label-info' do %>
+				<%= question.comments.count %> 
+				<%= glyph :comment %>
+				<% end %>
+
+				<%= content_tag :div, :title => pluralize(question.answers.count, "answer"), :class => 'label label-success' do %>
+				<%= question.answers.count %>
+				<%= glyph :lightbulb %>
+				<% end %>
+			</p>
+		</div>
+	</div>
 </div>
