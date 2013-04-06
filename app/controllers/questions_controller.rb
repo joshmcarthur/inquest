@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   def index
     @activities = PublicActivity::Activity.order('created_at DESC').limit(20)
     @search = Question.search(params[:q])
-    @questions = @search.result(:distinct => true).page(params[:page])
+    @questions = @search.result(:distinct => true).order('updated_at DESC').page(params[:page])
   end
 
   def show
