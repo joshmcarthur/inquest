@@ -2,7 +2,14 @@ en:
   disclosure:
     email_reactor:
       question:
-        created:
+        create:
           subject: 'New Question on Inquest'
-        answered:
+      answer:
+        accepted:
           subject: 'Question Answered on Inquest'
+      comment:
+        create:
+          subject: 'New Comment on Inquest'
+      vote:
+        create:
+          subject: 'Vote added on Inquest'

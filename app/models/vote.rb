@@ -13,4 +13,10 @@ class Vote < ActiveRecord::Base
   scope :upvotes, :conditions => {:direction => 'up'}
   scope :downvotes, :conditions => {:direction => 'down'}
 
+  # Public: Define the actions that are notifiable for this model.
+  # Returns an array of notifiable actions
+  def self.notifiable_actions
+    %w( create )
+  end
+
 end

@@ -34,7 +34,12 @@ class User < ActiveRecord::Base
   # 
   # Returns true if the voteable exists in the collection of votes, and false if not
   def voted_on?(voteable, direction = ['up', 'down'])
-    !self.votes.where(:voteable_id => voteable.id, :voteable_type => voteable.class.name).where(direction.nil? ? '1=1' : {:direction => direction}).count.zero?
+    !self.votes.where(
+      :voteable_id => voteable.id, 
+      :voteable_type => voteable.class.name
+    ).where(
+      direction.nil? ? '1=1' : {:direction => direction}
+    ).count.zero?
   end
   
   # Public: Find the user record based on conditions passed to us by a devise controller.

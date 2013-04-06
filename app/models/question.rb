@@ -5,8 +5,6 @@ class Question < ActiveRecord::Base
   include Inquest::ContentMarkdownable
   include PublicActivity::Model
 
-  attr_accessor :accepted_answer_has_changed
-
   tracked :owner => ->(controller, model) { controller && controller.send(:current_user) }
 
   belongs_to :user
@@ -17,17 +15,6 @@ class Question < ActiveRecord::Base
   validates :content, :presence => true
 
   before_save :timestamp_state_change, :if => :state_changed?
-
-  # Public: Define the actions that are notifiable for this model.
-  # Returns an array of notifiable actions
-  def self.notifiable_actions
-    %w( answered created )
-  end
-
-  def accepted_answer=(new_answer)
-    accepted_answer_will_change! unless self.accepted_answer == new_answer
-    super
-  end
 
   # Public: Determine whether this question is owned by the given user.
   #
@@ -57,15 +44,12 @@ class Question < ActiveRecord::Base
     self.states
   end
 
-  # Disclosure methods
-  def answered?
-    self.accepted_answer.is_a?(Answer) && self.accepted_answer_has_changed
-  end
 
-  def created?
-    self.created_at_changed?
+  # Public: Define the actions that are notifiable for this model.
+  # Returns an array of notifiable actions
+  def self.notifiable_actions
+    %w( create )
   end
-
 
   private
 

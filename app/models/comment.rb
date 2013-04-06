@@ -8,4 +8,10 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   validates :commentable, :user, :content, :presence => true
+
+  # Public: Define the actions that are notifiable for this model.
+  # Returns an array of notifiable actions
+  def self.notifiable_actions
+    %w( create )
+  end
 end
