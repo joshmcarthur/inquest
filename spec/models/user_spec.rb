@@ -12,7 +12,7 @@ describe User do
 
     it "should create default notification rules" do
       subject.send(:create_default_notification_rules)
-      subject.should have(2).notification_rules
+      subject.should have_at_least(2).notification_rules
     end
   end
 
