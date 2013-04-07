@@ -14,6 +14,7 @@ describe Users::NotificationRulesController do
   end
 
   before do
+    users(:tester).notification_rules.delete_all
     sign_in users(:tester)
   end
 
