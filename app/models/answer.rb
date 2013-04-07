@@ -29,7 +29,11 @@ class Answer < ActiveRecord::Base
   #
   # Returns the updated object
   def accept!
+    Answer.public_activity_off
     self.update_attribute(:accepted_at, DateTime.now)
+    Answer.public_activity_on
+    
+    self.create_activity :key => 'answer.accepted', :owner => self.question.user
     self
   end
 

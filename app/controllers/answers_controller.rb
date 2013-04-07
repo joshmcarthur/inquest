@@ -21,7 +21,6 @@ class AnswersController < ApplicationController
   def accept
     @answer = @question.answers.find(params[:id])
     if @answer.accept!
-      @answer.create_activity :key => 'answer.accepted', :owner => current_user
       redirect_to @question, :notice => 'Answer marked as accepted!'
     else
       redirect_to @question, :notice => 'Answer could not be marked as accepted, please try again.'
