@@ -48,6 +48,7 @@ end
 group :test do
   gem 'rake'
   gem 'capybara'
+  gem 'poltergeist'
 end
 
 group :development, :test do
