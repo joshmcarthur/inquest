@@ -29,7 +29,7 @@
 
 		<div class="submitted-by">
 			Submitted by <%= link_to question.user.username, question.user %>
-			at <%= question.created_at.to_s(:short) %>
+			about <%= distance_of_time_in_words_to_now(question.created_at, true) %> ago.
 		</div>
 	</div>
 
