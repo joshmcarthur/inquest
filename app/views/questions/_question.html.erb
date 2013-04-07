@@ -1,40 +1,36 @@
 <div class="question">
-	<div class="row">
+	<div class="meta">
+		<% if question.accepted_answer %>
+		<%= glyph 'ok-sign', 2, 'accepted' %>
+		<% else %>
+		<%= glyph 'ok-sign', 2 %>
+		<% end %>
 
+		<p class="lead comments">
+			<%= glyph :comment %>
+			<%= question.comments.count %>
+			Comments 
+		</p>
 
-		<div class="span7">
-			<h3>
-				<%= link_to question.title, question %>
-			</h3>
-			<p>
-				<%= truncate(question.content, :length => 150) %>
-			</p>
+		<p class="lead answers">
+			<%= glyph :lightbulb %>
+			<%= question.answers.count %>
+			Answers
+		</p>
+	</div>
 
-			<div class="submitted-by">
-				Submitted by <%= link_to question.user.username, question.user %>
-				at <%= question.created_at.to_s(:short) %>
-			</div>
-		</div>
+	<div class="description">
+		<h3>
+			<%= link_to question.title, question %>
+		</h3>
+		<p>
+			<%= truncate(question.content, :length => 150) %>
+		</p>
 
-		<div class="span1 meta accepted">
-			<p>
-				<% if question.accepted_answer %>
-				<%= glyph 'ok-sign', 2, 'accepted' %>
-				<% else %>
-				<%= glyph 'ok-sign', 2 %>
-				<% end %>
-			</p>
-			<p>
-				<%= content_tag :div, :title => pluralize(question.comments.count, "comment"), :class => 'label label-info' do %>
-				<%= question.comments.count %> 
-				<%= glyph :comment %>
-				<% end %>
-
-				<%= content_tag :div, :title => pluralize(question.answers.count, "answer"), :class => 'label label-success' do %>
-				<%= question.answers.count %>
-				<%= glyph :lightbulb %>
-				<% end %>
-			</p>
+		<div class="submitted-by">
+			Submitted by <%= link_to question.user.username, question.user %>
+			at <%= question.created_at.to_s(:short) %>
 		</div>
 	</div>
+
 </div>
