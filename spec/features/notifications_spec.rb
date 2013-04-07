@@ -49,8 +49,8 @@ describe "Notifications", :js => true do
 
     it "should create a notification" do
       question = user.questions.create(:title => "Test", :content => "Test")
-      Disclosure::Rule.any_instance.should_receive(:react!).with(an_instance_of(Answer)).once()
       answer = question.answers.create(:user => user, :content => "Test").accept!
+      Disclosure::Rule.any_instance.should_receive(:react!).with(an_instance_of(Answer)).once()
       answer.create_activity :key => 'answer.accepted', :owner => user
     end
 
