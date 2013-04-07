@@ -9,7 +9,6 @@ Inquest::Application.routes.draw do
 
 
   resources :users, :only => [:show, :edit, :update]
-  resources :activities, :only => :index
 
   resources :questions do
     resource :votes, :only => [:create]
