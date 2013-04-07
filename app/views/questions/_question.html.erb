@@ -1,4 +1,25 @@
 <div class="question">
+	<div class="meta">
+		<% if question.accepted_answer %>
+		<%= glyph 'ok-sign', 2, 'accepted' %>
+		<% else %>
+		<%= glyph 'ok-sign', 2 %>
+		<% end %>
+
+		<p class="lead comments">
+			<%= glyph :comment %>
+			<%= question.comments.count %>
+			Comments 
+		</p>
+
+		<p class="lead answers">
+			<%= glyph :lightbulb %>
+			<%= question.answers.count %>
+			Answers
+		</p>
+	</div>
+
+	<div class="description">
 		<h3>
 			<%= link_to question.title, question %>
 		</h3>
@@ -8,6 +29,8 @@
 
 		<div class="submitted-by">
 			Submitted by <%= link_to question.user.username, question.user %>
-			at <%= question.created_at.to_s(:short) %>
+			about <%= distance_of_time_in_words_to_now(question.created_at, true) %> ago.
 		</div>
+	</div>
+
 </div>
