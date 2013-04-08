@@ -1,17 +1,13 @@
 require 'spec_helper'
 
-describe "Notifications", :js => true do
+describe "Notifications" do
   fixtures :users
 
   let(:user) { users(:tester) }
 
-  before do
-    sign_in_as user
-  end
-
   describe "when user creates questions" do
     before do
-      create_notification_rule("Questions", "created")
+      create_notification_rule("Question", "create")
     end
 
     it "should create a notification" do
@@ -37,28 +33,27 @@ describe "Notifications", :js => true do
       end
 
       it "should contain a link to the question" do
-        subject.body.should include question_path(user.questions.last)
+        subject.body.should include "/questions/#{user.questions.last.id}"
       end
     end
   end
 
   describe "when user answers question" do
     before do
-      create_notification_rule("Answers", "accepted")
+      create_notification_rule("Answer", "accepted")
     end
 
     it "should create a notification" do
       question = user.questions.create(:title => "Test", :content => "Test")
-      answer = question.answers.create(:user => user, :content => "Test").accept!
+      answer = question.answers.create(:user => user, :content => "Test")
       Disclosure::Rule.any_instance.should_receive(:react!).with(an_instance_of(Answer)).once()
-      answer.create_activity :key => 'answer.accepted', :owner => user
+      answer.accept!
     end
 
     describe "notification" do
       before do
         question = user.questions.create(:title => "Test", :content => "Test")
         answer = question.answers.create(:user => user, :content => "Test").accept!
-        answer.create_activity :key => 'answer.accepted', :owner => user
       end
 
       subject do
@@ -74,14 +69,14 @@ describe "Notifications", :js => true do
       end
 
       it "should contain a link to the question" do
-        subject.body.should include question_path(user.questions.last)
+        subject.body.should include  "/questions/#{user.questions.last.id}"
       end
     end
   end
 
   describe "when user votes question" do
     before do
-      create_notification_rule("Votes", "created")
+      create_notification_rule("Vote", "create")
     end
 
     it "should create a notification" do
@@ -109,14 +104,14 @@ describe "Notifications", :js => true do
       end
 
       it "should contain a link to the question" do
-        subject.body.should include question_path(user.questions.last)
+        subject.body.should include  "/questions/#{user.questions.last.id}"
       end
     end
   end
 
   describe "when user votes answer" do
     before do
-      create_notification_rule("Votes", "created")
+      create_notification_rule("Vote", "create")
     end
 
     it "should create a notification" do
@@ -146,14 +141,14 @@ describe "Notifications", :js => true do
       end
 
       it "should contain a link to the question" do
-        subject.body.should include question_path(user.questions.last)
+        subject.body.should include  "/questions/#{user.questions.last.id}"
       end
     end
   end
 
   describe "when user comments on question" do
     before do
-      create_notification_rule("Comments", "created")
+      create_notification_rule("Comment", "create")
     end
 
     it "should create a notification" do
@@ -181,19 +176,16 @@ describe "Notifications", :js => true do
       end
 
       it "should contain a link to the question" do
-        subject.body.should include question_path(user.questions.last)
+        subject.body.should include  "/questions/#{user.questions.last.id}"
       end
     end
   end
 
   def create_notification_rule(model, action)
-    visit users_notification_rules_path
-    select model, :from  => 'rule[notifier_class]'
-
-    within "##{model.singularize}_actions" do
-      select action, :from => 'rule[action]'
-    end
-
-    click_button 'Save Notification'
+    user.notification_rules.where(
+      :notifier_class => model,
+      :action => action,
+      :reactor_class => "Disclosure::EmailReactor"
+    ).first_or_create
   end
 end
