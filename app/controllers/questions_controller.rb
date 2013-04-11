@@ -33,10 +33,6 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-<<<<<<< HEAD
-    params.require(:question).permit(:title, :content, :state)
-=======
-    params.require(:question).permit(:title, :content, :tags_string)
->>>>>>> pass 1 existing tag test
+    params.require(:question).permit(:title, :content, :state, :tags_string)
   end
 end
