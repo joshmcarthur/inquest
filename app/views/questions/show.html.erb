@@ -3,6 +3,12 @@
 		<%= render "shared/voteable_controls", :voteable => @question %>
 		<div class="span11">
 			<h1 class="title"><%= @question.title %></h1>
+			<div class="tags-display">
+				<% @question.tags.each do |tag| %>
+					<%= content_tag :span, tag.title, :class => 'tag' %>
+				<% end %>
+			</div>
+
 			<%= render "questions/owner_controls" if @question.owned_by?(current_user) && @question.available? %>
 			<div class="content"><%= @question.content_html %></div>
 
@@ -11,7 +17,6 @@
 			<%= render "comments/comment_button", :commentable => @question %>
 			<%= render "comments/modal", :commentable => @question %>
 
-			<div class="tags"><%= @question.tags_string %></div>
 
 			<div id="answers">
 				<h3>Answers</h3>
