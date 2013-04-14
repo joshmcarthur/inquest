@@ -23,6 +23,7 @@ gem 'flat-ui-rails'
 gem 'font-awesome-sass-rails'
 gem 'gravtastic'
 gem 'kaminari'
+gem 'select2-rails'
 
 
 
