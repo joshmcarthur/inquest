@@ -2,6 +2,7 @@ class Question < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
   include Inquest::Voteable
   include Inquest::Commentable
+  include Inquest::Taggable
   include Inquest::ContentMarkdownable
   include PublicActivity::Model
 
@@ -11,18 +12,11 @@ class Question < ActiveRecord::Base
   has_one :accepted_answer, :class_name => 'Answer', :conditions => 'accepted_at IS NOT NULL'
   has_many :answers, :order => 'accepted_at, votes_count DESC'
   has_many :votes, :as => :voteable
-  has_and_belongs_to_many :tags
 
   validates :title, :presence => true
   validates :content, :presence => true
 
   before_save :timestamp_state_change, :if => :state_changed?
-  validate :validate_existing_of_tags
-
-  # Public: To store the tags as a string
-  # This instance variable will be use for validate_existing_of_tags
-  # validate method to split the string to array by ','
-  attr_writer :tags_string
 
   # Public: Render the Markdown content of this question as HTML.
   #
@@ -85,29 +79,6 @@ class Question < ActiveRecord::Base
   def timestamp_state_change
     self.state_last_updated = DateTime.now if state_changed?
     self
-  end
-
-  def tags_string
-    @tags_string || tags.pluck(:title).join(',')
-  end
-
-
-  private
-
-  # Private: Validate the tag string contain all the tags that exist
-  # Add errors if tags is not exist
-  def validate_existing_of_tags
-    unless tags_string.nil?
-      tags_array = tags_string.split(',').inject([]) do |memo, tag_string|
-        if tag = Tag.find_by_title(tag_string.strip)
-          memo << tag
-        else
-          errors.add :tags,  "#{tag_string} is not valid"
-        end
-        memo
-      end
-      self.tags = tags_array
-    end
   end
 
 end
