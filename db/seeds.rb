@@ -36,7 +36,7 @@ end
 end
 
 if Tag.count.zero?
-  %w( taggy love programming ).each do |default_tag|
-    Tag.where(title: default_tag).first_or_create
+  %w( rails servers best-practises ).each do |default_tag|
+    Tag.where(name: default_tag).first_or_create
   end
 end

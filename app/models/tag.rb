@@ -1,5 +1,4 @@
 class Tag < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
-
-  attr_accessor :title
+  validate :name, uniqueness: true, allow_blank: false
 end
