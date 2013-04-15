@@ -51,12 +51,11 @@ describe QuestionsController do
     describe "POST create" do
       context "correct attributes are provided" do
         let(:tag) { tags(:test) }
-        let(:tag2) { tags(:test2) }
         before do
           post :create, :question => {
             :title => 'New Question',
             :content => 'New Content',
-            :tag_ids => [tag.id, tag2.id]
+            :tag_ids => [tag.id]
           }
         end
 
@@ -73,7 +72,7 @@ describe QuestionsController do
         end
 
         it "should assign the tag" do
-          assigns(:question).tags.should == [tag, tag2]
+          assigns(:question).tags.should == [tag]
         end
 
       end
