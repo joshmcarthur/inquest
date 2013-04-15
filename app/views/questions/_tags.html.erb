@@ -1,0 +1,8 @@
+<% if @question.tags.any? %>
+<div class="tags-display">
+  <%= glyph :tags, 2, 'tag' %>
+  <% @question.tags.each do |tag| %>
+  <%= content_tag :span, tag.name, :class => 'tag' %>
+  <% end %>
+</div>
+<% end %>
