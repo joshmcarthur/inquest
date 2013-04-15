@@ -3,13 +3,12 @@
 		<%= render "shared/voteable_controls", :voteable => @question %>
 		<div class="span11">
 			<h1 class="title"><%= @question.title %></h1>
-			<div class="tags-display">
-				<% @question.tags.each do |tag| %>
-					<%= content_tag :span, tag.title, :class => 'tag' %>
-				<% end %>
-			</div>
+
 
 			<%= render "questions/owner_controls" if @question.owned_by?(current_user) && @question.available? %>
+
+			<%= render "questions/tags" %>
+
 			<div class="content"><%= @question.content_html %></div>
 
 			<%= render "questions/question_unavailable" if !@question.available? %>
