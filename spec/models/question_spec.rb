@@ -15,10 +15,9 @@ describe Question do
   context "with valid attributes" do
     it { should be_valid }
     describe "1 to 5 tags" do
-      context "one existing tag in tags_string" do
+      context "one existing tag in tags_list" do
         before do
-          subject.tags_string = "tagtest"
-          subject.valid? # to trigger the validate_existing_of_tags
+          subject.tags_list = tag.name
         end
 
         it  "should have the tags" do
@@ -29,8 +28,7 @@ describe Question do
       context "5 existing tag in tags_string" do
         before do
           five_tags
-          subject.tags_string = "tagtest, tagtest2, tagtest3, tagtest4, tagtest5"
-          subject.valid? # to trigger the validate_existing_of_tags
+          subject.tags_list = five_tags.pluck(:name).join(',')
         end
 
         it  "should have the tags" do
@@ -52,7 +50,7 @@ describe Question do
 
     context "with non-existing tag" do
       before(:each) do
-        subject.tags_string = 'non-existing-tag'
+        subject.tags_list = 'non-existing-tag'
       end
       it { should_not be_valid }
     end
