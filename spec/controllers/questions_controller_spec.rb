@@ -53,7 +53,11 @@ describe QuestionsController do
         let(:tag) { tags(:test) }
         let(:tag2) { tags(:test2) }
         before do
-          post :create, :question => {:title => 'New Question', :content => 'New Content', tags_string: 'tagtest, tagtest2'}
+          post :create, :question => {
+            :title => 'New Question',
+            :content => 'New Content',
+            :tag_ids => [tag.id, tag2.id]
+          }
         end
 
         it "should redirect to the question page" do
