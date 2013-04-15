@@ -20,7 +20,7 @@ describe Question do
           subject.tags_list = tag.name
         end
 
-        it  "should have the tags" do
+        it "should have the tags" do
           subject.tags.should == [tag]
         end
       end
@@ -28,7 +28,7 @@ describe Question do
       context "5 existing tag in tags_string" do
         before do
           five_tags
-          subject.tags_list = five_tags.pluck(:name).join(',')
+          subject.tags_list = five_tags.map(&:name).join(',')
         end
 
         it  "should have the tags" do
@@ -48,12 +48,6 @@ describe Question do
       it { should_not be_valid }
     end
 
-    context "with non-existing tag" do
-      before(:each) do
-        subject.tags_list = 'non-existing-tag'
-      end
-      it { should_not be_valid }
-    end
 
   end
 
