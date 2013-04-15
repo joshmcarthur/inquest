@@ -13,9 +13,5 @@
    </ul>
  </div>
 
-<%= form_for @question, :html => {:style => 'display:inline', :class => 'form-inline'} do |f| %>
-  <%= f.collection_select :tag_ids, Tag.all, :id, :name, {}, :multiple => true, :prompt => 'Tag question:', :class => 'select2' %>
-<% end %>
-
  <div class="clearfix"></div>
 </div>
