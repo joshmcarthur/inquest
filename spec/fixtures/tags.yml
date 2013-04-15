@@ -1,17 +1,17 @@
 test:
-  title: 'tagtest'
+  name: 'tagtest'
 
 test2:
-  title: 'tagtest2'
+  name: 'tagtest2'
 
 test3:
-  title: 'tagtest3'
+  name: 'tagtest3'
 
 test4:
-  title: 'tagtest4'
+  name: 'tagtest4'
 
 test5:
-  title: 'tagtest5'
+  name: 'tagtest5'
 
 another:
-  title: 'anothertag'
+  name: 'anothertag'
