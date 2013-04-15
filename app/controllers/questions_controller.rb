@@ -33,6 +33,6 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :content, :state, :tags_string)
+    params.require(:question).permit(:title, :content, :state, :tag_ids => [])
   end
 end
