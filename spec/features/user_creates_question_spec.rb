@@ -13,7 +13,23 @@ describe "User creates question" do
       click_link 'New Question'
     end
 
-    describe "with valid inputs" do
+    context "with invalid inputs" do
+      before do
+        within "form#new_question" do
+          click_button 'Create Question'
+        end
+      end
+
+      it "should be on the new question page" do
+        page.should have_selector "form#new_question"
+      end
+
+      it "should show an error message on each required input" do
+        all('.control-group.error').should have(4).items
+      end
+    end
+
+    context "with valid inputs" do
       before do
         within "form#new_question" do
           fill_in "Title", :with => question.title
@@ -23,7 +39,7 @@ describe "User creates question" do
         end
       end
 
-      it "should be on the question page" do
+      it "should still have the new question form" do
         current_path.should match question_path(Question.last.id)
       end
 
