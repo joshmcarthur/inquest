@@ -1,4 +1,5 @@
-<div class="question">
+
+<div class="question <%= question.accepted_answer ? 'accepted' : '' %>">
 	<div class="meta">
 		<% if question.accepted_answer %>
 		<%= glyph 'ok-sign', 2, 'accepted' %>
@@ -6,17 +7,17 @@
 		<%= glyph 'ok-sign', 2 %>
 		<% end %>
 
-		<p class="lead comments">
-			<%= glyph :comment %>
-			<%= question.comments.count %>
-			Comments 
-		</p>
-
 		<p class="lead answers">
 			<%= glyph :lightbulb %>
-			<%= question.answers.count %>
-			Answers
+			<%= pluralize(question.answers.count, 'Answer') %>
 		</p>
+
+		<p class="lead comments">
+			<%= glyph :comment %>
+			<%= pluralize(question.comments.count, 'Comment') %>
+		</p>
+
+
 	</div>
 
 	<div class="description">

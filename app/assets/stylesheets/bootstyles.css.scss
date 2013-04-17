@@ -3,12 +3,17 @@
 @import "flat-ui";
 
 
-body { 
-	background-color: #ECF0F1;
+body {
+	background-color: #FFF;
 	padding-top: 60px;
 	padding-bottom: 60px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	a {
+		color: #222;
+	}
+}
 
 .navbar-fixed-top > .navbar-inner {
 	background-color: #34495E;
