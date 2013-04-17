@@ -4,7 +4,9 @@ Disclosure.configure do |config|
 end
 
 Disclosure::EmailReactor.class_eval do
-  def self.reaction_description 
+  include Rails.application.routes.url_helpers
+
+  def self.reaction_description
     "send me an email"
   end
 end
