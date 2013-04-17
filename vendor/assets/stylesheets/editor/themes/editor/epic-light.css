@@ -1,12 +1,15 @@
-html { padding:10px; }
+html { padding: 0px; }
 
 body {
-  border:0;
-  background:#fcfcfc;
+  border: 2px solid #dce4ec;
+  background:#ECF0F1;
+  color: #222;
   font-family:monospace;
   font-size:14px;
   padding:10px;
   line-height:1.35em;
   margin:0;
-  padding:0;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
 }
+
