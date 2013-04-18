@@ -7,6 +7,7 @@
 	padding-top: 10px;
 	padding-bottom: 10px;
 	border-bottom: solid 1px #cfd4d5;
+	position: relative;
 
 	&:last-child {
 		border-bottom: none;
@@ -31,6 +32,9 @@
 	}
 
 	.author {
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
 		color: #7F8C8D;
 		padding: 10px;
 		margin-top: 10px;

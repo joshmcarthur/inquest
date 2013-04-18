@@ -3,15 +3,19 @@
 		<%= render "shared/voteable_controls", :voteable => @question %>
 		<div class="span11">
 			<h1 class="title"><%= @question.title %></h1>
-			<%= render "questions/owner_controls" if @question.owned_by?(current_user) && @question.available? %>
 			<div class="content"><%= @question.content_html %></div>
 
 			<%= render "questions/question_unavailable" if !@question.available? %>
 
-			<%= render "comments/comment_button", :commentable => @question %>
+			<%= render "questions/owner_controls" if @question.owned_by?(current_user) && @question.available? %>
+
+			<%= render "author", :author => @question.user, :authored => @question %>
+			<%= render "comments/button", :commentable => @question %>
 			<%= render "comments/modal", :commentable => @question %>
 
-			
+			<div class="clearfix"></div>
+
+
 			<div id="answers">
 				<h3>Answers</h3>
 				<%= render @question.answers.select(&:persisted?) %>
