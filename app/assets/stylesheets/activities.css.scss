@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-ul#activities {
+ul.feed {
 	margin-top: 10px;
 
 	li.header {
@@ -12,15 +12,21 @@ ul#activities {
 		padding: 20px 10px;
 	}
 
+	li.footer {
+		background-color: #1abc9c !important;
+		color: #34495e;
+		text-align: center
+	}
+
 	li {
 		background: #6285a8;
 	}
-	li:first-child { 
+	li:first-child {
 		border-top-left-radius: 6px;
 		border-top-right-radius: 6px;
 	}
 
-	li:last-child { 
+	li:last-child {
 		border-bottom-left-radius: 6px;
 		border-bottom-right-radius: 6px;
 	}
