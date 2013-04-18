@@ -1,5 +1,5 @@
 <h1>Questions By Tag</h1>
 
 <dl>
-  <%= render @tags %>
+  <%= render @tags.select { |t| t.questions.any? } %>
 </dl>
