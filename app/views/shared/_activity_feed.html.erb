@@ -1,0 +1,10 @@
+<ul id="activities" class="feed unstyled">
+  <%= render :partial => 'activities/activity_header' %>
+  <%= render :partial => 'activities/activity', :collection => @activities %>
+  <%= content_tag :li, :class => 'footer' do %>
+    <%= link_to '/activities' do %>
+      All Activities
+      <%= glyph 'circle-arrow-right' %>
+    <% end %>
+  <% end %>
+</ul>
