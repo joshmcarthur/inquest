@@ -393,7 +393,7 @@
 
                         <br>
 
-                        <h1 class="h1" style="text-align:center;"><%= link_to 'View this Question', "#{ActionMailer::Base.default_url_options[:host]}/questions/#{@model.voteable.is_a?(Question) ? @model.voteable.id : @model.voteable.question.id}" %></h1>
+                        <h1 class="h1" style="text-align:center;"><%= link_to 'View this Question', question_url(@model.voteable.is_a?(Question) ? @model.voteable : @model.voteable.question) %></h1>
                       </div>
                     </td>
                   </tr>
@@ -428,7 +428,7 @@
               <tr>
                 <td colspan="2" valign="middle" id="utility">
                   <div mc:edit="std_utility">
-                   <%= link_to "Manage the notifications you receive", "#{ActionMailer::Base.default_url_options[:host]}/users/notification_rules" %>
+                   <%= link_to "Manage the notifications you receive", users_notification_rules_url %>
                  </div>
                </td>
              </tr>
