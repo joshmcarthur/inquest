@@ -10,7 +10,7 @@
 
 			<%= render "questions/owner_controls" if @question.owned_by?(current_user) && @question.available? %>
 
-			<%= render "author", :author => @question.user, :authored => @question %>
+			<%= render "shared/author", :author => @question.user, :authored => @question %>
 			<%= render "comments/button", :commentable => @question %>
 			<%= render "comments/modal", :commentable => @question %>
 
