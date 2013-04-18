@@ -16,6 +16,8 @@ class Question < ActiveRecord::Base
   validates :title, :presence => true
   validates :content, :presence => true
 
+  scope :top, lambda { |n| order('updated_at').limit(n) }
+
   before_save :timestamp_state_change, :if => :state_changed?
 
   # Public: Render the Markdown content of this question as HTML.
