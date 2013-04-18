@@ -56,9 +56,13 @@ input.input-block-level {
 		width: 80%;
 		padding: 2%;
 	}
-}
 
-#owner-controls {
-	background-color: #FFF;
 
 }
+
+#question {
+	.author {
+		float: left;
+	}
+}
+
