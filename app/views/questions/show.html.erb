@@ -3,6 +3,7 @@
 		<%= render "shared/voteable_controls", :voteable => @question %>
 		<div class="span11">
 			<h1 class="title"><%= @question.title %></h1>
+			<%= render "questions/tags" %>
 			<div class="content"><%= @question.content_html %></div>
 
 			<%= render "questions/question_unavailable" if !@question.available? %>
@@ -22,6 +23,4 @@
 			</div>
 			<%= render "answers/form" if @question.available? %>
 		</div>
-	</div>
 </div>
-

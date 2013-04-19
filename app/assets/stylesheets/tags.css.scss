@@ -1,0 +1,29 @@
+//= require select2
+
+.badge-tag {
+  background-color: #1abc9c;
+}
+
+.tags-display {
+  background: #d7dce0;
+  padding: 10px;
+  margin: 25px auto;
+
+  i.icon-tags {
+    background: #1abc9c;
+    color: white;
+  }
+
+  .tag {
+    border-radius: 4px;
+    background: white;
+    color: #1abc9c;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 6px 13px 6px 13px;
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    zoom: 1;
+  }
+}
