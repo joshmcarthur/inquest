@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130401054710) do
+ActiveRecord::Schema.define(:version => 20130414082753) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -66,24 +66,6 @@ ActiveRecord::Schema.define(:version => 20130401054710) do
 
   add_index "disclosure_rules", ["owner_id"], :name => "index_disclosure_rules_on_owner_id"
 
-  create_table "notification_rules", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "class_name"
-    t.string   "reactor_name"
-    t.string   "action"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "notification_rules", ["user_id"], :name => "index_notification_rules_on_user_id"
-
-  create_table "organizations", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "subdomain",  :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "questions", :force => true do |t|
     t.string   "title",                             :null => false
     t.text     "content",                           :null => false
@@ -96,6 +78,17 @@ ActiveRecord::Schema.define(:version => 20130401054710) do
   end
 
   add_index "questions", ["user_id"], :name => "index_questions_on_user_id"
+
+  create_table "questions_tags", :id => false, :force => true do |t|
+    t.integer "question_id"
+    t.integer "tag_id"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "", :null => false

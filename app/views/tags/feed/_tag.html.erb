@@ -1,0 +1,7 @@
+<li>
+  <%= link_to tag do %>
+    <%= glyph :tag %>
+    <%= tag.name %>
+    <%= badge(tag.questions.count, 'badge-tag') %>
+  <% end %>
+</li>

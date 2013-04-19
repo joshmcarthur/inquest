@@ -1,0 +1,4 @@
+<ul id="tags" class="feed unstyled">
+  <%= render :partial => 'tags/feed/header' %>
+  <%= render :partial => 'tags/feed/tag', :collection => Tag.all %>
+</ul>
