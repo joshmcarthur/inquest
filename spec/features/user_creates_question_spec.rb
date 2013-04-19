@@ -48,7 +48,7 @@ describe "User creates question" do
       end
 
       it "should show tags" do
-        all('.tags-display > span.tag').should have(1).item
+        all('.tags-display > a.tag').should have(1).item
       end
 
       it "should show content" do
