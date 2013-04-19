@@ -12,7 +12,6 @@ describe Tag do
     subject.should be_valid
   end
 
-  # TODO passing specs
   it "should require a name" do
     subject.name = ""
     subject.valid?
