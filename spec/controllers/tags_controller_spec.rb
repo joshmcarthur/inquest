@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TagsController do
 
-  fixtures :tags, :users
+  fixtures :tags, :questions, :users
 
   let(:tag) { tags(:test) }
   let(:user) { users(:tester) }
@@ -41,6 +41,21 @@ describe TagsController do
 
     it "should render the show template" do
       response.should render_template :show
+    end
+
+    context "current tag has no questions" do
+      before do
+        tag.questions.clear
+        get :show, :id => tag.id
+      end
+
+      it "should redirect to the tags page" do
+        response.should redirect_to Tag
+      end
+
+      it "should set an alert for the user" do
+        flash[:notice].should_not be_blank
+      end
     end
   end
 end

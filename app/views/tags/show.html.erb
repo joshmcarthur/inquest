@@ -1,3 +1,3 @@
 <h1><%= glyph :tag %>&nbsp;<%= @tag.name %></h1>
 
-<%= render @tag.questions.order('updated_at') %>
+<%= render(@tag.questions.order('updated_at')) %>
