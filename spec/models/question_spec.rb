@@ -3,21 +3,25 @@ require 'spec_helper'
 describe Question do
   fixtures :questions
 
-  subject do 
-    questions(:test)
+  subject do
+    question = questions(:test)
+    question
   end
 
   context "with valid attributes" do
     it { should be_valid }
   end
 
-  context "with invalid attributes" do
+  describe "with invalid attributes" do
 
-    before(:each) do
-      subject.title = ''
+    context "empty title" do
+      before(:each) do
+        subject.title = ''
+      end
+      it { should_not be_valid }
     end
 
-    it { should_not be_valid }
+
   end
 
   it "should have answers" do

@@ -1,0 +1,10 @@
+<% if @question.tags.any? %>
+<div class="tags-display">
+  <%= glyph :tags, 2, 'tag' %>
+  <% @question.tags.each do |tag| %>
+  <%= link_to tag, :class => 'tag' do %>
+    <%= tag.name %>
+  <% end %>
+  <% end %>
+</div>
+<% end %>

@@ -2,6 +2,9 @@
 	<%= f.label :title %>
 	<%= f.text_field :title, :class => 'input-block-level' %>
 
+  <%= f.label :tag_ids, 'Tags' %>
+  <%= f.collection_select :tag_ids, Tag.all, :id, :name, {}, :multiple => true, :prompt => 'Tag question:', :class => 'select2' %>
+
 	<%= f.label :content %>
 	<div class="epiceditor" data-sync-with="#question_content"></div>
 	<%= f.text_area :content, :class => 'hide' %>

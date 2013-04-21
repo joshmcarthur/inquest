@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Vote do
-  fixtures :questions, :votes
+  fixtures :questions, :votes, :users
 
   subject do
     votes(:up_on_question)

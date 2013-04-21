@@ -1,0 +1,9 @@
+<dt><h2><%= glyph(:tag) %>&nbsp;<%= tag.name %></h2></dt>
+<dd>
+  <%= render tag.questions.top(5) %>
+  <%= link_to tag, :class => 'btn btn-info pull-right' do %>
+    More
+    <%= glyph 'circle-arrow-right' %>
+  <% end %>
+  <div class="clearfix"></div>
+</dd>

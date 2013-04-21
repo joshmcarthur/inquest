@@ -2,6 +2,7 @@ class Question < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
   include Inquest::Voteable
   include Inquest::Commentable
+  include Inquest::Taggable
   include Inquest::ContentMarkdownable
   include PublicActivity::Model
 
@@ -10,11 +11,27 @@ class Question < ActiveRecord::Base
   belongs_to :user
   has_one :accepted_answer, :class_name => 'Answer', :conditions => 'accepted_at IS NOT NULL'
   has_many :answers, :order => 'accepted_at, votes_count DESC'
+  has_many :votes, :as => :voteable
 
   validates :title, :presence => true
   validates :content, :presence => true
 
+  scope :top, lambda { |n| order('updated_at').limit(n) }
+
   before_save :timestamp_state_change, :if => :state_changed?
+
+  # Public: Render the Markdown content of this question as HTML.
+  #
+  # This method uses the Redcarpet library to convert the Markdown
+  # question content into HTML for rendering into a view.
+  #
+  # #FIXME it should also handle sanitizing the output, stripping potentially
+  # dangerous or disallowed tags.
+  #
+  # Returns the generated HTML for the question content
+  def content_html
+    Inquest::Application.config.markdown_renderer.render(self.content).html_safe
+  end
 
   # Public: Determine whether this question is owned by the given user.
   #
@@ -25,7 +42,7 @@ class Question < ActiveRecord::Base
   end
 
   # Public: Return whether this question is 'available' or not.
-  # Available means whether it has a state set which prevents anyone from 
+  # Available means whether it has a state set which prevents anyone from
   # changing it, as determined by unavailable_states
   #
   # Returns true if the question is available, and false if not.
@@ -54,15 +71,16 @@ class Question < ActiveRecord::Base
   private
 
   # Private: Update the state changed timestamp.
-  # 
+  #
   # This callback is fired to update a datetime attribute
   # which reflects when the state was last changed. This
   # allows us to display handy information in the view, such
   # as 'Question closed by <user> at <date>'
-  # 
+  #
   # Returns the object
   def timestamp_state_change
     self.state_last_updated = DateTime.now if state_changed?
     self
   end
+
 end

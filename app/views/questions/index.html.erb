@@ -5,9 +5,7 @@
 		<%= paginate @questions %>
 	</div>
 	<div class="span3">
-		<ul id="activities" class="unstyled">
-			<%= render :partial => 'activities/activity_header' %>
-			<%= render :partial => 'activities/activity', :collection => @activities %>
-		</ul>
+		<%= render "shared/tags_list" %>
+		<%= render "shared/activity_feed" %>
 	</div>
 </div>

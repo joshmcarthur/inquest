@@ -11,7 +11,7 @@ describe ApplicationHelper do
 
     it "should render an i tag" do
       #FIXME let's make this a regex
-      @output.should include "</i>"  
+      @output.should include "</i>"
     end
 
     it "should have the icon name as a class" do
@@ -25,7 +25,7 @@ describe ApplicationHelper do
 
   describe "#badge" do
     before do
-      @output = helper.badge(2)
+      @output = helper.badge(2, "badge-test")
     end
 
     it "should include a span with the correct class" do
@@ -34,6 +34,10 @@ describe ApplicationHelper do
 
     it "should include the number passed in" do
       @output.should include ">2</span>"
+    end
+
+    it "should include a custom class" do
+      @output.should include "class=\"badge badge-test"
     end
   end
 
