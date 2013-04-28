@@ -29,7 +29,7 @@
 		</p>
 
 		<div class="submitted-by">
-			Submitted by <%= link_to question.user.username, question.user %>
+			Submitted by <%= inline_user_display(question.user) %>
 			about <%= distance_of_time_in_words_to_now(question.created_at, true) %> ago.
 		</div>
 	</div>
